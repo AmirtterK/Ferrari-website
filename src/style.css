@@ -5,7 +5,6 @@
 html {
   scroll-behavior: smooth;
 }
-
 @font-face {
   font-family: "custom-font-1";
   src: url("./assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf")
@@ -64,189 +63,13 @@ canvas#sf23-model {
   display: flex;
   align-items: center;
   justify-content: start;
-  padding: 10px 30px;
+  padding: 15px 15px;
   gap: 90px;
   color: white;
 }
 
-.logo img {
-  height: 40px;
-}
-
-nav {
-  display: flex;
-  gap: 80px;
-}
-
-nav a {
-  text-decoration: none;
-  font-family: "Body-Font";
-  font-size: 12px;
-  color: white;
-  letter-spacing: 2px;
-}
-
-/* floating-#main-thumbnail{
-
-} */
-#sf23-reveal {
-  position: relative;
-  z-index: 1;
-  height: 100vh;
-  width: 100%;
-  object-fit: cover;
-  overflow: hidden;
-}
-
-/* loading logo */
-
-#load {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  z-index: 4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeOut 1s ease-out 1s forwards;
-}
-
-#load img {
-  max-width: 17%;
-  max-height: 17%;
-  animation: fadeOut 3s;
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-/* main specs */
-#main-specs {
-  position: absolute;
-  z-index: 3;
-  bottom: 10%;
-  right: 5%;
-  display: flex;
-  color: white;
-  text-align: center;
-}
-.main-specs dt,
-#main-specs dd {
-  display: block;
-}
-
-#main-specs dt {
-  padding: 0 40px;
-  font-size: 36px;
-  font-weight: bold;
-  font-family: "Title-Font";
-}
-
-#main-specs dd {
-  font-size: 11px;
-  margin-top: 5px;
-  font-family: "Body-Font";
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.spec-seperator {
-  height: 20px;
-  width: 1px;
-  background-color: white;
-  align-self: center;
-  z-index: 3;
-}
-/* description */
-#description-text {
-  position: relative;
-  display: flex;
-  height: 100px;
-  text-align: center;
-  justify-content: center;
-  font-family: "Body-Font";
-  font-size: 13px;
-  padding: 80px 25%;
-  color: #969696;
-}
-/* unvieling video */
-
-* {
-  margin: 0;
-  padding: 0;
-}
-html {
-  scroll-behavior: smooth;
-}
-@font-face {
-  font-family: "custom-font-1";
-  src: url("./assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Body-Font";
-  src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: fallback;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: "Body-Font-Medium";
-  src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: fallback;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: "Title-Font";
-  src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: fallback;
-  font-stretch: normal;
-}
-
-#app,
-#container {
-  position: relative;
-  z-index: 0;
-  background: transparent;
-  pointer-events: none;
-  background: transparent;
-}
-
-canvas#sf23-model {
-  position: relative;
-  clip-path: inset(0px 90px 0px 90px);
-  right: 0;
-  z-index: 2;
-}
-
-/* navigation */
-.nav-bar {
-  position: fixed;
-  top: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  padding: 10px 30px;
-  gap: 90px;
-  color: white;
-}
-
-.logo img {
-  height: 40px;
+.logo img { 
+  height: 38px;
 }
 
 nav {
@@ -278,7 +101,7 @@ nav a {
   width: 100%;
   height: 100%;
   background-color: #000;
-  z-index: 4;
+  z-index: 70;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -393,7 +216,7 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ff0000, #990000);
+  background: url("./assets/pictures/sf23-unveiling-thumbnail.png");
   background-size: 100% 100%;
   overflow: hidden;
 }
@@ -460,7 +283,7 @@ nav a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: transparent;
   z-index: 2000;
   display: flex;
   align-items: center;
@@ -476,7 +299,7 @@ nav a {
 .video-container {
   position: relative;
   width: 90%;
-  max-width: 1200px;
+  max-width: 1000px;
   background: #000;
   border-radius: 12px;
   overflow: hidden;

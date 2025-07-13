@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="assets/logo/ferrari-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squadra Rossa</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="container"></div>
+
+    <!-- <div id="load">
+      <img src="assets/logo/ferrari-logo-white.svg" alt="" />
+    </div> -->
+
+    <div id="main-wrapper">
+      <img id="sf23-reveal" src="assets/pictures/sf23-reveal.jpg" alt="" />
+      <div id="main-specs">
+        <div>
+          <dt>V6</dt>
+          <dd>MOTORE</dd>
+        </div>
+        <div class="spec-seperator"></div>
+        <div>
+          <dt>1600 cc</dt>
+          <dd>CILINDRATA</dd>
+        </div>
+        <div class="spec-seperator"></div>
+        <div>
+          <dt>798 kg</dt>
+          <dd>PESO</dd>
+        </div>
+        <div class="spec-seperator"></div>
+        <div>
+          <dt>120 kW</dt>
+          <dd>CILINDRATA</dd>
+        </div>
+      </div>
+    </div>
+    <header class="nav-bar">
+      <div class="logo">
+        <img src="assets/logo/ferrari-logo-white.svg" alt="Ferrari Logo" />
+      </div>
+      <nav>
+        <a href="#">SQUADRA</a>
+        <a href="#">MACCHINA</a>
+        <a href="#">CORSA</a>
+        <a href="#">STORIA</a>
+      </nav>
+    </header>
+    <div id="description-text">
+      Sviluppata e costruita a Maranello, la Ferrari SF23, guidata da Carlos
+      Sainz Jr. e Charles Leclerc, ha partecipato al Campionato di Formula 1
+      2023. Sebbene fosse considerata un'evoluzione della F1-75 dello scorso
+      anno, si tratta di una vettura completamente nuova, sviluppata sulla base
+      dell'esperienza maturata nel 2022. Il motore è lo stesso della F1-75, ma è
+      stato necessario un grande lavoro per risolvere i problemi di
+      affidabilità.
+    </div>
+    <input type="checkbox" id="video-toggle" style="display: none" />
+    <div class="floating-video-player">
+      <label for="video-toggle" class="floating-video-thumbnail">
+        <div class="thumbnail-content">
+          <div class="play-button"></div>
+        </div>
+      </label>
+      <div class="video-modal">
+        <div class="video-container">
+          <div class="video-player">
+            <label class="close-button" for="video-toggle">&#x00D7;</label>
+            <video id="main-video" controls loop>
+              <source
+                src="assets/videos/sf-23-unveiling.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/src/video.js"></script>
+    <!-- <canvas id="sf23-model"></canvas> -->
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

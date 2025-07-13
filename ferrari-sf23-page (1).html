@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="assets/logo/ferrari-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squadra Rossa</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @font-face {
+        font-family: "custom-font-1";
+        src: url("./assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf")
+          format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Body-Font";
+        src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: fallback;
+        font-stretch: normal;
+      }
+
+      @font-face {
+        font-family: "Body-Font-Medium";
+        src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: fallback;
+        font-stretch: normal;
+      }
+
+      @font-face {
+        font-family: "Title-Font";
+        src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: fallback;
+        font-stretch: normal;
+      }
+
+      #app,
+      #container {
+        position: relative;
+        z-index: 0;
+        background: transparent;
+        pointer-events: none;
+        background: transparent;
+      }
+
+      canvas#sf23-model {
+        position: relative;
+        clip-path: inset(0px 90px 0px 90px);
+        right: 0;
+        z-index: 2;
+      }
+
+      /* navigation */
+      .nav-bar {
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        padding: 10px 30px;
+        gap: 90px;
+        color: white;
+      }
+
+      .logo img {
+        height: 40px;
+      }
+
+      nav {
+        display: flex;
+        gap: 80px;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-family: "Body-Font";
+        font-size: 12px;
+        color: white;
+        letter-spacing: 2px;
+      }
+
+      #sf23-reveal {
+        position: relative;
+        z-index: 1;
+        height: 100vh;
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+
+      /* loading logo */
+
+      #load {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        z-index: 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeOut 1s ease-out 1s forwards;
+      }
+
+      #load img {
+        max-width: 17%;
+        max-height: 17%;
+        animation: fadeOut 3s;
+      }
+
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+      /* main specs */
+      #main-specs {
+        position: absolute;
+        z-index: 3;
+        bottom: 10%;
+        right: 5%;
+        display: flex;
+        color: white;
+        text-align: center;
+      }
+      .main-specs dt,
+      #main-specs dd {
+        display: block;
+      }
+
+      #main-specs dt {
+        padding: 0 40px;
+        font-size: 36px;
+        font-weight: bold;
+        font-family: "Title-Font";
+      }
+
+      #main-specs dd {
+        font-size: 11px;
+        margin-top: 5px;
+        font-family: "Body-Font";
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .spec-seperator {
+        height: 20px;
+        width: 1px;
+        background-color: white;
+        align-self: center;
+        z-index: 3;
+      }
+      /* description */
+      #description-text {
+        position: relative;
+        display: flex;
+        height: 100px;
+        text-align: center;
+        justify-content: center;
+        font-family: "Body-Font";
+        font-size: 13px;
+        padding: 80px 25%;
+        color: #969696;
+      }
+      /* unvieling video */
+
+      .floating-video-player {
+        position: absolute;
+        bottom: 15%;
+        left: 6%;
+        z-index: 10;
+      }
+
+      .floating-video-thumbnail {
+        display: block;
+        cursor: pointer;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        border: 2px solid rgb(39, 39, 39);
+      }
+
+      .floating-video-thumbnail:hover {
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 3px 3px rgba(255, 0, 0, 0.4);
+        animation: none;
+      }
+
+      #video-toggle:checked ~ .floating-video-player .floating-video-thumbnail {
+        display: none;
+      }
+
+      #video-toggle:checked ~ .floating-video-player .video-modal {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: scale(1);
+      }
+
+      #video-toggle:checked ~ .floating-video-player .video-container {
+        transform: scale(1);
+      }
+
+      .thumbnail-content {
+        position: relative;
+        width: 160px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #ff0000, #990000);
+        background-size: 100% 100%;
+        overflow: hidden;
+      }
+
+      .thumbnail-content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.8;
+      }
+
+      .play-button {
+        position: relative;
+        z-index: 2;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .play-button::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 12px solid #333;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        margin-left: 3px;
+      }
+
+      .floating-video-player summary:hover .play-button {
+        background: white;
+        transform: scale(1.1);
+      }
+
+      .thumbnail-label {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        color: white;
+        font-family: "Body-Font";
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 4px 8px;
+        border-radius: 4px;
+        backdrop-filter: blur(10px);
+      }
+
+      /* Video Modal */
+      .video-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        transform: scale(0);
+      }
+
+      .video-container {
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        transform: scale(0.8);
+        transition: transform 0.3s ease;
+      }
+
+      .video-header {
+        background: linear-gradient(135deg, #ff0000, #990000);
+        padding: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+      }
+
+      .video-title {
+        font-family: "Title-Font";
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .close-button {
+        position: absolute;
+        right: 20px;
+        top: 5%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        background: none;
+        border: none;
+        color: white;
+        text-decoration: none;
+        z-index: 40;
+      }
+
+      .close-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) rotate(90deg);
+      }
+
+      .video-player {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+        background: #000;
+      }
+
+      .video-player video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .video-controls {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        padding: 20px;
+        color: white;
+        font-family: "Body-Font";
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* Animations */
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .floating-video-player {
+          bottom: 20px;
+          left: 20px;
+        }
+
+        .thumbnail-content {
+          width: 120px;
+          height: 68px;
+        }
+
+        .video-container {
+          width: 95%;
+          margin: 20px;
+        }
+
+        .video-header {
+          padding: 15px;
+        }
+
+        .video-title {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="container"></div>
+    <div id="main-wrapper">
+      <img
+        id="sf23-reveal"
+        src="https://via.placeholder.com/1920x1080/000000/ffffff?text=SF23+Reveal"
+        alt="SF23 Reveal"
+      />
+      <div id="main-specs">
+        <div>
+          <dt>V6</dt>
+          <dd>MOTORE</dd>
+        </div>
+        <div class="spec-seperator"></div>
+        <div>
+          <dt>1600 cc</dt>
+          <dd>CILINDRATA</dd>
+        </div>
+        <div class="spec-seperator"></div>
+        <div>
+          <dt>798 kg</dt>
+          <dd>PESO</dd>
+        </div>
+        <div class="spec-seperator"></div>
+        <div>
+          <dt>120 kW</dt>
+          <dd>POTENZA</dd>
+        </div>
+      </div>
+    </div>
+    <header class="nav-bar">
+      <div class="logo">
+        <img
+          src="https://via.placeholder.com/40x40/ff0000/ffffff?text=F"
+          alt="Ferrari Logo"
+        />
+      </div>
+      <nav>
+        <a href="#">SQUADRA</a>
+        <a href="#">MACCHINA</a>
+        <a href="#">CORSA</a>
+        <a href="#">STORIA</a>
+      </nav>
+    </header>
+    <div id="description-text">
+      Sviluppata e costruita a Maranello, la Ferrari SF23, guidata da Carlos
+      Sainz Jr. e Charles Leclerc, ha partecipato al Campionato di Formula 1
+      2023. Sebbene fosse considerata un'evoluzione della F1-75 dello scorso
+      anno, si tratta di una vettura completamente nuova, sviluppata sulla base
+      dell'esperienza maturata nel 2022. Il motore è lo stesso della F1-75, ma è
+      stato necessario un grande lavoro per risolvere i problemi di
+      affidabilità.
+    </div>
+    <input type="checkbox" id="video-toggle" style="display: none" />
+    <div class="floating-video-player">
+      <label for="video-toggle" class="floating-video-thumbnail">
+        <div class="thumbnail-content">
+          <div class="play-button"></div>
+        </div>
+      </label>
+      <div class="video-modal">
+        <div class="video-container">
+          <div class="video-player">
+            <label class="close-button" for="video-toggle">&#x00D7;</label>
+            <video id="main-video" controls loop>
+              <source
+                src="assets/videos/sf-23-unveiling.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/src/video.js"></script>
+  </body>
+</html>

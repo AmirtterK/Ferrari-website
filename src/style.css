@@ -378,7 +378,7 @@ nav a {
 .video-container {
   position: relative;
   width: 90%;
-  max-width: 1000px;
+  max-width: 75vw;
   background: #000;
   border-radius: 12px;
   overflow: hidden;
@@ -397,12 +397,6 @@ nav a {
   position: relative;
 }
 
-.video-title {
-  font-family: "Title-Font";
-  font-size: 18px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
 
 .close-button {
   position: absolute;

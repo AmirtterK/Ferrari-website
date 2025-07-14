@@ -21,14 +21,14 @@ body::-webkit-scrollbar {
 
 @font-face {
   font-family: "custom-font-1";
-  src: url("./assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf")
+  src: url("/assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf")
     format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Body-Font";
-  src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
+  src: url("/assets/fonts/Ferrari-SansRegular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: fallback;
@@ -37,7 +37,7 @@ body::-webkit-scrollbar {
 
 @font-face {
   font-family: "Body-Font-Medium";
-  src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
+  src: url("/assets/fonts/Ferrari-SansRegular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: fallback;
@@ -46,7 +46,7 @@ body::-webkit-scrollbar {
 
 @font-face {
   font-family: "Title-Font";
-  src: url("./assets/fonts/Ferrari-SansRegular.woff") format("woff");
+  src: url("/assets/fonts/Ferrari-SansRegular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: fallback;
@@ -295,7 +295,7 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("./assets/pictures/sf23-unveiling-thumbnail.png");
+  background: url("/assets/pictures/sf23-unveiling-thumbnail.png");
   background-size: 100% 100%;
   overflow: hidden;
 }

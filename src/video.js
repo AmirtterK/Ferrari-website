@@ -19,12 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
     video.currentTime = 0;
   }
   function openVideo() {
-    // Small delay to ensure modal is visible before playing
     setTimeout(() => {
-      video.play().catch((error) => {
-        console.log("Auto-play prevented:", error);
-        // Auto-play might be blocked by browser, that's okay
-      });
+      video.play().catch((error) => {});
     }, 300);
   }
 });

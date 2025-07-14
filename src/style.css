@@ -2,9 +2,23 @@
   margin: 0;
   padding: 0;
 }
+html,
+body {
+  overflow-x: hidden;
+}
+body {
+  background-color: #000000;
+}
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: "custom-font-1";
   src: url("./assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf")
@@ -68,7 +82,7 @@ canvas#sf23-model {
   color: white;
 }
 
-.logo img { 
+.logo img {
   height: 38px;
 }
 
@@ -168,6 +182,71 @@ nav a {
   font-size: 13px;
   padding: 80px 25%;
   color: #969696;
+}
+
+#track-image {
+  position: relative;
+  z-index: 1;
+  height: 80vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#track-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* images slider */
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100vw; 
+  overflow: hidden; 
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 60px 5%;
+  gap: 4vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+
+  contain: layout;
+}
+.slider-wrapper .title {
+  font-size: 11px;
+  margin-top: 5px;
+  font-family: "Body-Font";
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ff0000;
+  padding: 20px 5%;
+}
+.slider .slide {
+  flex: 0 0 160px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.slider .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hide slider scrollbar */
+.slider::-webkit-scrollbar {
+  display: none;
 }
 /* unvieling video */
 
@@ -327,9 +406,8 @@ nav a {
 
 .close-button {
   position: absolute;
-  right: 20px;
-  top: 5%;
-  transform: translateY(-50%);
+  right: 1%;
+  top: 1%;
   font-size: 24px;
   cursor: pointer;
   width: 40px;
@@ -341,14 +419,14 @@ nav a {
   transition: all 0.3s ease;
   background: none;
   border: none;
-  color: white;
+  color: rgb(142, 141, 141);
   text-decoration: none;
   z-index: 40;
 }
 
 .close-button:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-50%) rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .video-player {

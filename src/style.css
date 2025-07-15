@@ -21,7 +21,8 @@ body::-webkit-scrollbar {
 
 @font-face {
   font-family: "custom-font-1";
-  src: url("../assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf") format("truetype");
+  src: url("../assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf")
+    format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -190,7 +191,7 @@ nav a {
 }
 
 .description-text {
-  flex: 1; 
+  flex: 1;
   display: flex;
   align-items: center;
   text-align: center;
@@ -201,7 +202,7 @@ nav a {
 }
 
 .description-image {
-  flex: 0 0 45vw; 
+  flex: 0 0 45vw;
   max-height: 65vh;
   overflow: hidden;
 }
@@ -250,6 +251,18 @@ nav a {
   overflow: hidden;
 }
 
+.slider .slide label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider .slide label:hover {
+  transform: scale(1.2) translateY(-5px);
+}
+
 .slider .slide img {
   width: 100%;
   height: 100%;
@@ -257,10 +270,88 @@ nav a {
   display: block;
 }
 
-/* Hide slider scrollbar */
 .slider::-webkit-scrollbar {
   display: none;
 }
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.image-container {
+  position: relative;
+  width: 90%;
+  max-width: 80vw;
+  max-height: 80vh;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.image-display {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+#image-1:checked ~ .image-modal-1,
+#image-2:checked ~ .image-modal-2,
+#image-3:checked ~ .image-modal-3,
+#image-4:checked ~ .image-modal-4,
+#image-5:checked ~ .image-modal-5,
+#image-6:checked ~ .image-modal-6 {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#image-1:checked ~ .image-modal-1 .image-container,
+#image-2:checked ~ .image-modal-2 .image-container,
+#image-3:checked ~ .image-modal-3 .image-container,
+#image-4:checked ~ .image-modal-4 .image-container,
+#image-5:checked ~ .image-modal-5 .image-container,
+#image-6:checked ~ .image-modal-6 .image-container {
+  transform: scale(1);
+}
+
+/* Demo section */
+.demo-title {
+  color: #ff0000;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    width: 95%;
+    margin: 20px;
+  }
+}
+
 /* unvieling video */
 
 .floating-video-player {
@@ -368,7 +459,6 @@ nav a {
   backdrop-filter: blur(10px);
 }
 
-/* Video Modal */
 .video-modal {
   position: fixed;
   top: 0;

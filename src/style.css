@@ -80,8 +80,11 @@ canvas#sf23-model {
   padding: 15px 15px;
   gap: 90px;
   color: white;
+  transition: transform 0.3s ease;
 }
-
+.nav-hidden {
+  transform: translateY(-100%);
+}
 .logo img {
   height: 38px;
 }
@@ -237,20 +240,32 @@ nav a {
   contain: layout;
 }
 .slider-wrapper .title {
-  font-size: 1rem;
-  margin-top: 5px;
+  display: inline-flex;
+  align-items: center;
   font-family: "Body-Font";
+  font-size: 1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #ff0000;
+  color: #da291c;
   padding: 20px 5%;
+  margin-top: 5px;
+  gap: 4rem;
+}
+.slider-wrapper .title::after {
+  content: "";
+  display: inline-block;
+  background-color: #da291c;
+  width: 20rem;
+  height: 1px;
 }
 .slider .slide {
   flex: 0 0 160px;
   height: 100px;
   overflow: hidden;
 }
-
+input[type="checkbox"] {
+  display: none;
+}
 .slider .slide label {
   display: block;
   width: 100%;

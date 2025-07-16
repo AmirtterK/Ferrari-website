@@ -19,13 +19,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-@font-face {
-  font-family: "custom-font-1";
-  src: url("../assets/fonts/fonnts.com-SolanoGothicMVB-Bd.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+
 @font-face {
   font-family: "Body-Font";
   src: url("../assets/fonts/Ferrari-SansRegular.woff") format("woff");
@@ -61,12 +55,40 @@ body::-webkit-scrollbar {
   pointer-events: none;
   background: transparent;
 }
-
+/* 3d model */
 canvas#sf23-model {
   position: relative;
-  clip-path: inset(0px 90px 0px 90px);
-  right: 0;
+  display: flex;
+  justify-self: center;
   z-index: 2;
+  background-color: #990000;
+  border-radius: 5px;
+}
+.model-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.model-wrapper .title {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Body-Font";
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #da291c;
+  padding: 20px 5%;
+  margin-top: 5px;
+  gap: 4rem;
+}
+.model-wrapper .title::after {
+  content: "";
+  display: inline-block;
+  background-color: #da291c;
+  width: 20rem;
+  height: 1px;
 }
 
 /* navigation */
@@ -111,6 +133,89 @@ nav a {
   overflow: hidden;
 }
 
+/* macchina sidebar */
+
+.macchina-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background: #191919;
+  z-index: 3;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
+  box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+  overflow-y: hidden;
+}
+
+#macchina-toggle:checked ~ .macchina-sidebar {
+  transform: translateX(0);
+}
+.macchina-sidebar .sidebar-close-button:hover {
+  color: #da291c;
+  transform: rotate(90deg);
+  transition: transform 0.7s ease;
+}
+
+.macchine-sidebar-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 50px;
+  /* width: 100px; */
+  padding: 1.5rem 1rem;
+  height: 100%;
+  background: rgb(20, 20, 20);
+}
+.macchine-sidebar-main {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 10px;
+  /* width: 100px; */
+  padding: 5rem 1rem;
+  height: 100%;
+  background: rgb(24, 24, 24);
+}
+.macchine-sidebar-main ul {
+  list-style: none;
+}
+.macchine-sidebar-main li {
+  font-family: "Body-Font";
+  font-stretch: normal;
+  letter-spacing: normal;
+  font-size: 13px;
+  line-height: 1.6em;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 0.8rem 1.2rem;
+  color: rgb(171, 171, 171);
+}
+.macchine-sidebar-main li:hover {
+   color: rgb(255, 255, 255);
+}
+.sidebar-close-button {
+  font-size: 2rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  color: rgb(142, 141, 141);
+  text-decoration: none;
+  z-index: 40;
+}
 /* loading logo */
 
 #load {
@@ -140,7 +245,7 @@ nav a {
 /* main specs */
 #main-specs {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   bottom: 10%;
   right: 5%;
   display: flex;
@@ -213,6 +318,8 @@ nav a {
 .description-image img {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
+
   object-fit: cover;
 }
 
@@ -326,7 +433,6 @@ input[type="checkbox"] {
   height: 100%;
   width: auto;
   display: block;
-  /* max-height: 80vh; */
   object-fit: contain;
 }
 
@@ -375,7 +481,7 @@ input[type="checkbox"] {
   position: absolute;
   bottom: 15%;
   left: 6%;
-  z-index: 10;
+  z-index: 2;
 }
 
 .floating-video-thumbnail {
@@ -416,7 +522,7 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("../assets/pictures/sf23-unveiling-thumbnail.png");
+  background: url("../assets/pictures/sf23/sf23-unveiling-thumbnail.png");
   background-size: 100% 100%;
   overflow: hidden;
 }

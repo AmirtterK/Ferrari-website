@@ -1,5 +1,5 @@
 let lastScrollY = window.scrollY;
-const navBar = document.querySelector(".nav-bar");
+const navBar = document.querySelector(".nav-bar ");
 
 window.addEventListener("scroll", () => {
   const currentScrollY = window.scrollY;

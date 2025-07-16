@@ -7,7 +7,7 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 import { PointerLockControls } from "three/examples/jsm/controls/PointerLockControls.js";
 
 const keys = {};
-const moveSpeed = 0.03;
+const moveSpeed = 0.1;
 
 // scene
 const scene = new THREE.Scene();
@@ -18,36 +18,48 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   2000
 );
-camera.position.setX(3);
-camera.position.setY(4.52);
-camera.position.setZ(16.35);
-camera.lookAt(new THREE.Vector3(3, -0.7, 5));
+
+// Set initial camera position
+camera.position.set(-13,3.5,-1);
 
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#sf23-model"),
-  alpha:0
+  alpha: 0
 });
-renderer.setClearColor(0x000000, 0); // black color, 0 alpha = transparent
-
-renderer.render(scene, camera);
+renderer.setClearColor(0x000000, 0);
 
 // dimensions
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth /1.5, window.innerHeight /1.5);
+renderer.setSize(window.innerWidth / 1.3, window.innerHeight / 1.3);
+
+// Create controls but don't activate them immediately
+const controls = new PointerLockControls(camera, renderer.domElement);
+
+// Set initial camera look direction AFTER creating controls
+// This will set the camera to look at the target point
+const targetPoint = new THREE.Vector3(-3.7, 2, -1);
+camera.lookAt(targetPoint);
 
 // listeners
-
 document.addEventListener("keydown", (e) => {
   keys[e.key.toLowerCase()] = true;
 });
 document.addEventListener("keyup", (e) => {
   keys[e.key.toLowerCase()] = false;
 });
-document.addEventListener("click", () => {
-  controls.lock();
+
+const canvas = document.getElementById("sf23-model");
+
+canvas.addEventListener("click", () => {
+  controls.lock(); 
 });
 
-const controls = new PointerLockControls(camera, renderer.domElement);
+// Add escape key listener to unlock controls for testing
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    controls.unlock();
+  }
+});
 
 loadCars();
 
@@ -58,47 +70,43 @@ const pointLightHelper = new THREE.PointLightHelper(pointLight);
 scene.add(pointLightHelper);
 scene.add(pointLight);
 
-const ambientLight = new THREE.AmbientLight(0xffffff,1);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
 const gridHelper = new THREE.GridHelper(100, 50);
-// scene.add(gridHelper);
+scene.add(gridHelper); // Uncommented to help with orientation
 
 const axesHelper = new THREE.AxesHelper(5);
-// scene.add(axesHelper);
-
-// Array(200).fill().forEach(addStar);
+scene.add(axesHelper); // Uncommented to help with orientation
 
 animate();
 
 function animate() {
-  if (keys["z"]) controls.moveForward(moveSpeed);
-  if (keys["s"]) controls.moveForward(-moveSpeed);
-  if (keys["d"]) controls.moveRight(moveSpeed);
-  if (keys["q"]) controls.moveRight(-moveSpeed);
-  if (keys["r"]) camera.position.y += moveSpeed;
-  if (keys["f"]) camera.position.y -= moveSpeed;
+  // Only process movement controls if pointer is locked
+  if (controls.isLocked) {
+    if (keys["z"]) controls.moveForward(moveSpeed);
+    if (keys["s"]) controls.moveForward(-moveSpeed);
+    if (keys["d"]) controls.moveRight(moveSpeed);
+    if (keys["q"]) controls.moveRight(-moveSpeed);
+    if (keys["r"]) camera.position.y += moveSpeed;
+    if (keys["f"]) camera.position.y -= moveSpeed;
+  }
 
   requestAnimationFrame(animate);
 
-  // torus.rotation.x += 0.02;
-  // torus.rotation.y += 0.02;
-  // torus.rotation.z += 0.02;
+  // Debug camera position and look direction
   console.log(
-    `Camera position: x=${camera.position.x.toFixed(
-      2
-    )}, y=${camera.position.y.toFixed(2)}, z=${camera.position.z.toFixed(2)}`
+    `Camera position: x=${camera.position.x.toFixed(2)}, y=${camera.position.y.toFixed(2)}, z=${camera.position.z.toFixed(2)}`
   );
-  // const direction = new THREE.Vector3();
-  // camera.getWorldDirection(direction);
-
-  // const cameraLookAtPoint = new THREE.Vector3()
-  //   .copy(camera.position)
-  //   .add(direction.multiplyScalar(10));
-  // console.log("Camera is looking at point:", cameraLookAtPoint);
+  
+  const direction = new THREE.Vector3();
+  camera.getWorldDirection(direction);
+  const cameraLookAtPoint = new THREE.Vector3()
+    .copy(camera.position)
+    .add(direction.multiplyScalar(10));
+  console.log("Camera is looking at point:", cameraLookAtPoint);
 
   controls.update();
-
   renderer.render(scene, camera);
 }
 
@@ -125,18 +133,22 @@ function loadGlb(
     function (gltf) {
       const model = gltf.scene;
       model.position.set(position.x, position.y, position.z);
-      model.scale.set(6,6,6);
+      model.scale.set(6, 6, 6);
+      
+      // Set rotation based on provided degrees, not camera position
       model.rotation.x = degrees.x * (Math.PI / 180);
-      model.rotation.y = Math.atan2(
-        camera.position.x - position.x,
-        camera.position.z - position.z
-      );
+      model.rotation.y = degrees.y * (Math.PI / 180);
       model.rotation.z = degrees.z * (Math.PI / 180);
+      
+      // Remove the automatic camera-facing rotation
+      // model.rotation.y = Math.atan2(
+      //   camera.position.x - position.x,
+      //   camera.position.z - position.z
+      // );
+      
       model.traverse((child) => {
         if (child.isMesh && child.material) {
           const material = child.material;
-
-          // Support for multi-material arrays
           const materials = Array.isArray(material) ? material : [material];
 
           materials.forEach((mat) => {
@@ -181,19 +193,15 @@ function loadFbx(path, position = { x: 0, y: 0, z: 0 }, degrees = 0) {
   );
 }
 
-
-
 function loadBackGround() {
   const spaceTexture = new THREE.TextureLoader().load("../assets/space.jpg");
-
   scene.background = spaceTexture;
 }
 
 function loadCars() {
   loadGlb(
     "assets/sf23-2/sf23.gltf",
-    { x: 3, y: 0, z: 0 },
+    { x: 0, y: 0, z: 0 },
     { x: 0, y: 0, z: 0 }
-    // { x: 0, y: 0, z: 0 }
   );
 }

@@ -200,7 +200,7 @@ function loadBackGround() {
 
 function loadCars() {
   loadGlb(
-    "assets/sf23-2/sf23.gltf",
+    "../assets/sf23-2/sf23.gltf",
     { x: 0, y: 0, z: 0 },
     { x: 0, y: 0, z: 0 }
   );

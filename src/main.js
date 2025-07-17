@@ -108,7 +108,7 @@ const carData = {
     images: {
       main: "assets/pictures/499p/499p-main.jpg",
       description: "assets/pictures/499p/499p-description.jpg",
-      thumbnail: "../assets/pictures/499p/499p-thumbnail.jpg",
+      thumbnail: "assets/pictures/499p/499p-thumbnail.jpg",
       slides: [
         "assets/pictures/499p/slides/slide-1.jpg",
         "assets/pictures/499p/slides/slide-2.jpg",
@@ -319,7 +319,7 @@ function loadScene(path, glb, scale, degrees) {
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth / 1.3, window.innerHeight / 1.3);
   const loader = new THREE.TextureLoader();
-  loader.load("../assets/pictures/canvas-background.jpg", function (texture) {
+  loader.load("assets/pictures/canvas-background.jpg", function (texture) {
     scene.background = texture;
   });
 

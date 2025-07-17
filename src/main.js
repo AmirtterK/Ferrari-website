@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function switcMacchine(key) {
   const car = carData[key];
   if (!key) return;
+  clear();
   document.title = car.title;
   document.getElementById("engine").innerHTML = car.engine;
   document.getElementById("displacement").innerHTML =
@@ -155,7 +156,7 @@ async function switcMacchine(key) {
   thumbnail.style.backgroundSize = "cover";
   thumbnail.style.backgroundPosition = "center";
 
-  generateGallery(car.images.slides,key);
+  generateGallery(car.images.slides, key);
   const videoSource = document.querySelector("#main-video source");
   if (videoSource) {
     videoSource.src = car.video;
@@ -179,8 +180,28 @@ async function switcMacchine(key) {
     modelWrapper.style.display = "none";
   }
 }
+async function clear() {
+  document.title = car.title;
 
-function generateGallery(slides,key) {
+  document.getElementById("main-picture").src = "";
+  document.getElementById("description-image").src = "";
+  const thumbnail = document.getElementById("video-thumbnail");
+  thumbnail.style.backgroundImage = null;
+
+  generateGallery(car.images.slides, key);
+  const videoSource = document.querySelector("#main-video source");
+  if (videoSource) {
+    videoSource.src = "";
+    document.getElementById("main-video").load();
+  }
+  const modelWrapper = document.getElementById("model-wrapper");
+  if (car.model) {
+    modelWrapper.innerHTML = "";
+  } else {
+    modelWrapper.style.display = "none";
+  }
+}
+function generateGallery(slides, key) {
   const checkboxesContainer = document.getElementById("image-checkboxes");
   const sliderContainer = document.getElementById("image-slider");
   const modalsContainer = document.getElementById("image-modals-container");

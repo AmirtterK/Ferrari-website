@@ -128,7 +128,7 @@ const carData = {
   },
 };
 
-let current = "sf90";
+let current = "sf23";
 
 async function switcMacchine(key) {
   const car = carData[key];

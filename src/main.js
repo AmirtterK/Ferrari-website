@@ -31,7 +31,7 @@ const carData = {
     glb: true,
     scale: 6,
     degrees: 0,
-    path: "../assets/3d-model/sf23/sf23.gltf",
+    path: "assets/3d-model/sf23/sf23.gltf",
   },
 
   sf90: {
@@ -45,7 +45,7 @@ const carData = {
     images: {
       main: "assets/pictures/sf90/sf90-main.jpg",
       description: "assets/pictures/sf90/sf90-description.jpg",
-      thumbnail: "../assets/pictures/sf90/sf90-thumbnail.png",
+      thumbnail: "assets/pictures/sf90/sf90-thumbnail.png",
       slides: [
         "assets/pictures/sf90/slides/slide-1.jpg",
         "assets/pictures/sf90/slides/slide-2.jpg",
@@ -63,7 +63,7 @@ const carData = {
     glb: true,
     scale: 4.4,
     degrees: 0,
-    path: "../assets/3d-model/sf90/sf90.glb",
+    path: "assets/3d-model/sf90/sf90.glb",
   },
   sf70h: {
     title: "Ferrari SF70H",
@@ -76,7 +76,7 @@ const carData = {
     images: {
       main: "assets/pictures/sf70h/sf70h-main.jpg",
       description: "assets/pictures/sf70h/sf70h-description.webp",
-      thumbnail: "../assets/pictures/sf70h/sf70h-thumbnail.png",
+      thumbnail: "assets/pictures/sf70h/sf70h-thumbnail.png",
       slides: [
         "assets/pictures/sf70h/slides/slide-1.jpg",
         "assets/pictures/sf70h/slides/slide-2.jpg",
@@ -95,7 +95,7 @@ const carData = {
     glb: false,
     scale: 0.05,
     degrees: 90,
-    path: "../assets/3d-model/sf70h/sf70h.fbx",
+    path: "assets/3d-model/sf70h/sf70h.fbx",
   },
   f499p: {
     title: "Ferrari 499P",

@@ -4,7 +4,6 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
-import { degrees } from "three/tsl";
 
 const carData = {
   sf23: {
@@ -320,10 +319,10 @@ function loadScene(path, glb, scale, degrees) {
   renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth / 1.3, window.innerHeight / 1.3);
-const loader = new THREE.TextureLoader();
-loader.load('../assets/pictures/canvas-background.jpg', function (texture) {
-  scene.background = texture;
-});
+  const loader = new THREE.TextureLoader();
+  loader.load("../assets/pictures/canvas-background.jpg", function (texture) {
+    scene.background = texture;
+  });
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;

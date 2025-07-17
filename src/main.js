@@ -16,7 +16,7 @@ const carData = {
     images: {
       main: "assets/pictures/sf23/sf23-main.jpg",
       description: "assets/pictures/sf23/sf23-description.jpg",
-      thumbnail: "../assets/pictures/sf23/sf23-thumbnail.png",
+      thumbnail: "assets/pictures/sf23/sf23-thumbnail.png",
       slides: [
         "assets/pictures/sf23/slides/slide-1.jpg",
         "assets/pictures/sf23/slides/slide-2.jpg",
@@ -45,7 +45,7 @@ const carData = {
     images: {
       main: "assets/pictures/sf90/sf90-main.jpg",
       description: "assets/pictures/sf90/sf90-description.jpg",
-      thumbnail: "../assets/pictures/sf90/sf90-thumbnail.png",
+      thumbnail: "assets/pictures/sf90/sf90-thumbnail.png",
       slides: [
         "assets/pictures/sf90/slides/slide-1.jpg",
         "assets/pictures/sf90/slides/slide-2.jpg",

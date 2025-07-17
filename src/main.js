@@ -3,6 +3,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+import { directPointLight } from "three/tsl";
 
 const carData = {
   sf23: {
@@ -128,7 +129,15 @@ const carData = {
   },
 };
 
-let current = "sf70h";
+document.addEventListener("DOMContentLoaded", () => {
+  let params = new URLSearchParams(window.location.search);
+  let car = params.get("Ferrari");
+  console.log(car);
+  if (car === "499p") car = "f499p";
+  if (car) {
+    switcMacchine(car);
+  } else switcMacchine("sf23");
+});
 
 async function switcMacchine(key) {
   const car = carData[key];
@@ -147,8 +156,7 @@ async function switcMacchine(key) {
   thumbnail.style.backgroundSize = "cover";
   thumbnail.style.backgroundPosition = "center";
 
-  current = key;
-  generateGallery(car.images.slides);
+  generateGallery(car.images.slides,key);
   const videoSource = document.querySelector("#main-video source");
   if (videoSource) {
     videoSource.src = car.video;
@@ -173,7 +181,7 @@ async function switcMacchine(key) {
   }
 }
 
-function generateGallery(slides) {
+function generateGallery(slides,key) {
   const checkboxesContainer = document.getElementById("image-checkboxes");
   const sliderContainer = document.getElementById("image-slider");
   const modalsContainer = document.getElementById("image-modals-container");
@@ -209,7 +217,7 @@ function generateGallery(slides) {
     modalDiv.innerHTML = `
       <div class="image-container">
         <label class="close-button" for="${checkboxId}">&#x00D7;</label>
-        <img class="image-display" src="${slide}" alt="Ferrari ${carData[current].title} - Image ${slideNumber}" />
+        <img class="image-display" src="${slide}" alt="Ferrari ${carData[key].title} - Image ${slideNumber}" />
       </div>
     `;
     modalsContainer.appendChild(modalDiv);
@@ -279,27 +287,6 @@ function generateGallery(slides) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const carLinks = document.querySelectorAll("[data-car]");
-  carLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      const key = this.getAttribute("data-car");
-      sessionStorage.setItem("selectedCar", key);
-      window.location.reload();
-      switcMacchine(key);
-    });
-  });
-
-  // Check for stored selection on load
-  const savedCar = sessionStorage.getItem("selectedCar") || current;
-  if (savedCar && carData[savedCar]) {
-    switcMacchine(savedCar);
-  } else {
-    switcMacchine(current);
-  }
-});
-
 function loadScene(path, glb, scale, degrees) {
   const scene = new THREE.Scene();
 
@@ -315,6 +302,8 @@ function loadScene(path, glb, scale, degrees) {
     canvas: document.querySelector("#sf23-model"),
     alpha: true,
   });
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth / 1.3, window.innerHeight / 1.3);
@@ -333,60 +322,37 @@ function loadScene(path, glb, scale, degrees) {
 
   const floorGeometry = new THREE.CircleGeometry(70, 64); // 100 radius, 64 segments
   const floorMaterial = new THREE.MeshStandardMaterial({
-    color: 0x444444,
+    color: 0xffffff,
     roughness: 0.6,
     metalness: 0.3,
   });
-  // const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-  // floor.rotation.x = -Math.PI / 2; 
-  // floor.receiveShadow = true;
-  // scene.add(floor);
+  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+  floor.rotation.x = -Math.PI / 2;
+  floor.receiveShadow = true;
+  scene.add(floor);
 
   loadCars(path, glb, scale, degrees);
 
-  const pointLight = new THREE.PointLight(0xffffff, 2100);
-  pointLight.position.set(20, 20, 6);
+  const directPointLight = new THREE.DirectionalLight(0xffffff, 1);
+  directPointLight.position.set(10, 50, 6);
+  directPointLight.castShadow = true;
+  directPointLight.shadow.mapSize.width = 512;
+  directPointLight.shadow.mapSize.height = 512;
+  directPointLight.shadow.camera.near = 0.5;
+  directPointLight.shadow.camera.far = 500;
   // scene.add(new THREE.PointLightHelper(pointLight));
 
-  scene.add(pointLight);
+  scene.add(directPointLight);
   scene.add(new THREE.AmbientLight(0xffffff, 1));
   // scene.add(new THREE.GridHelper(100, 50));
   // scene.add(new THREE.AxesHelper(5));
   animate();
 
   function animate() {
-    // Only process movement controls if pointer is locked
-    if (controls.isLocked) {
-      if (keys["z"]) controls.moveForward(moveSpeed);
-      if (keys["s"]) controls.moveForward(-moveSpeed);
-      if (keys["d"]) controls.moveRight(moveSpeed);
-      if (keys["q"]) controls.moveRight(-moveSpeed);
-      if (keys["r"]) camera.position.y += moveSpeed;
-      if (keys["f"]) camera.position.y -= moveSpeed;
-    }
-
     requestAnimationFrame(animate);
-
-    const direction = new THREE.Vector3();
-    camera.getWorldDirection(direction);
-    const cameraLookAtPoint = new THREE.Vector3()
-      .copy(camera.position)
-      .add(direction.multiplyScalar(10));
-    // console.log("Camera is looking at point:", cameraLookAtPoint);
 
     controls.update();
     renderer.render(scene, camera);
-  }
-
-  function addStar() {
-    const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-    const material = new THREE.MeshStandardMaterial({ color: 0x9bb0ff });
-    const star = new THREE.Mesh(geometry, material);
-    const [x, y, z] = Array(3)
-      .fill()
-      .map(() => THREE.MathUtils.randFloatSpread(100));
-    star.position.set(x, y, z);
-    scene.add(star);
   }
 
   function loadGlb(
@@ -407,12 +373,14 @@ function loadScene(path, glb, scale, degrees) {
         const model = gltf.scene;
         model.position.set(position.x, position.y, position.z);
         model.scale.set(scale, scale, scale);
-
+        model.castShadow = true;
+        model.receiveShadow = false;
         model.traverse((child) => {
           if (child.isMesh && child.material) {
             const material = child.material;
             const materials = Array.isArray(material) ? material : [material];
-
+            child.castShadow = true;
+            child.receiveShadow = false;
             materials.forEach((mat) => {
               if (mat.map) {
                 mat.map.anisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -448,6 +416,8 @@ function loadScene(path, glb, scale, degrees) {
         model.position.set(position.x, position.y, position.z);
         const radians = degrees * (Math.PI / 180);
         model.rotation.y = radians;
+        model.castShadow = true;
+        model.receiveShadow = false;
 
         scene.add(model);
       },

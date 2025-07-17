@@ -7,16 +7,16 @@
     <title>Squadra Rossa</title>
     <link rel="stylesheet" href="src/style.css" />
     <script type="importmap">
-{
-  "imports": {
-    "three": "https://esm.sh/three@0.158.0",
-    "three/examples/jsm/loaders/GLTFLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/GLTFLoader.js",
-    "three/examples/jsm/loaders/FBXLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/FBXLoader.js",
-    "three/examples/jsm/controls/OrbitControls.js": "https://esm.sh/three@0.158.0/examples/jsm/controls/OrbitControls.js",
-    "three/addons/loaders/DRACOLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/DRACOLoader.js"
-  }
-} 
-</script>
+      {
+        "imports": {
+          "three": "https://esm.sh/three@0.158.0",
+          "three/examples/jsm/loaders/GLTFLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/GLTFLoader.js",
+          "three/examples/jsm/loaders/FBXLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/FBXLoader.js",
+          "three/examples/jsm/controls/OrbitControls.js": "https://esm.sh/three@0.158.0/examples/jsm/controls/OrbitControls.js",
+          "three/addons/loaders/DRACOLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/DRACOLoader.js"
+        }
+      }
+    </script>
 
     <script src="src/nav.js" defer></script>
     <script src="src/video.js"></script>
@@ -33,7 +33,7 @@
     <div id="main-wrapper">
       <img
         id="main-picture"
-        src=""
+        src="assets/pictures/sf23/sf23-main.jpg"
         loading="lazy"
       />
       <div id="main-specs">
@@ -60,11 +60,13 @@
     </div>
     <header class="nav-bar">
       <div class="logo">
-        <img
-          src="assets/logo/ferrari-logo-white.svg"
-          alt="Ferrari Logo"
-          loading="lazy"
-        />
+        <a href="index.html" style="text-decoration: none">
+          <img
+            src="assets/logo/ferrari-logo-white.svg"
+            alt="Ferrari Logo"
+            loading="lazy"
+          />
+        </a>
       </div>
       <nav>
         <a href="#">SQUADRA</a>
@@ -105,10 +107,7 @@
           <div class="video-player">
             <label class="close-button" for="video-toggle">&#x00D7;</label>
             <video id="main-video" controls loop>
-              <source
-                src="assets/videos/sf23-unveiling.mp4"
-                type="video/mp4"
-              />
+              <source src="assets/videos/sf23-unveiling.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
@@ -143,10 +142,10 @@
       </div>
       <div class="macchine-sidebar-main">
         <ul>
-          <li><a href="#" data-car="sf23">SF23</a></li>
-          <li><a href="#" data-car="sf90">SF90</a></li>
-          <li><a href="#" data-car="sf70h">SF70H</a></li>
-          <li><a href="#" data-car="f499p">499P</a></li>
+          <li><a href="?Ferrari=sf23">SF23</a></li>
+          <li><a href="?Ferrari=sf90">SF90</a></li>
+          <li><a href="?Ferrari=sf70h">SF70H</a></li>
+          <li><a href="?Ferrari=499p">499P</a></li>
           <li></li>
           <li></li>
           <li></li>

@@ -62,6 +62,7 @@ canvas#sf23-model {
   z-index: 2;
   background-color: #404040;
   border-radius: 5px;
+  cursor: grab;
 }
 .model-wrapper {
   position: relative;

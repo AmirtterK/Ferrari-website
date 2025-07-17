@@ -45,7 +45,7 @@ const carData = {
     images: {
       main: "assets/pictures/sf90/sf90-main.jpg",
       description: "assets/pictures/sf90/sf90-description.jpg",
-      thumbnail: "assets/pictures/sf90/sf90-thumbnail.png",
+      thumbnail: "../assets/pictures/sf90/sf90-thumbnail.png",
       slides: [
         "assets/pictures/sf90/slides/slide-1.jpg",
         "assets/pictures/sf90/slides/slide-2.jpg",

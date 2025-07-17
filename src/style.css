@@ -19,7 +19,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-
 @font-face {
   font-family: "Body-Font";
   src: url("../assets/fonts/Ferrari-SansRegular.woff") format("woff");
@@ -61,7 +60,7 @@ canvas#sf23-model {
   display: flex;
   justify-self: center;
   z-index: 2;
-  background-color: #990000;
+  background-color: #404040;
   border-radius: 5px;
 }
 .model-wrapper {
@@ -79,7 +78,7 @@ canvas#sf23-model {
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #da291c;
-  padding: 20px 5%;
+  padding: 20px 5rem;
   margin-top: 5px;
   gap: 4rem;
 }
@@ -95,7 +94,7 @@ canvas#sf23-model {
 .nav-bar {
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -124,7 +123,7 @@ nav a {
   letter-spacing: 2px;
 }
 
-#sf23-reveal {
+#main-picture {
   position: relative;
   z-index: 1;
   height: 100vh;
@@ -144,7 +143,7 @@ nav a {
   display: flex;
   flex-direction: row;
   background: #191919;
-  z-index: 3;
+  z-index: 4;
   transform: translateX(-100%);
   transition: transform 0.4s ease-in-out;
   box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
@@ -197,8 +196,12 @@ nav a {
   padding: 0.8rem 1.2rem;
   color: rgb(171, 171, 171);
 }
+.macchine-sidebar-main a {
+  text-decoration: none;
+  color: rgb(171, 171, 171);
+}
 .macchine-sidebar-main li:hover {
-   color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 .sidebar-close-button {
   font-size: 2rem;
@@ -337,7 +340,7 @@ nav a {
   display: flex;
   width: 100%;
   height: auto;
-  padding: 60px 5%;
+  padding: 5% 5rem;
   gap: 4vw;
   overflow-x: auto;
   overflow-y: hidden;
@@ -354,7 +357,7 @@ nav a {
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #da291c;
-  padding: 20px 5%;
+  padding: 20px 5rem;
   margin-top: 5px;
   gap: 4rem;
 }
@@ -439,26 +442,24 @@ input[type="checkbox"] {
 .slider::-webkit-scrollbar {
   display: none;
 }
-#image-1:checked ~ .image-modal-1,
-#image-2:checked ~ .image-modal-2,
-#image-3:checked ~ .image-modal-3,
-#image-4:checked ~ .image-modal-4,
-#image-5:checked ~ .image-modal-5,
-#image-6:checked ~ .image-modal-6 {
+.image-modal.show {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-#image-1:checked ~ .image-modal-1 .image-container,
-#image-2:checked ~ .image-modal-2 .image-container,
-#image-3:checked ~ .image-modal-3 .image-container,
-#image-4:checked ~ .image-modal-4 .image-container,
-#image-5:checked ~ .image-modal-5 .image-container,
-#image-6:checked ~ .image-modal-6 .image-container {
+.image-modal.show .image-container {
   transform: scale(1);
 }
 
+.image-container {
+  pointer-events: auto;
+}
+
+/* Hide checkboxes */
+#image-checkboxes input[type="checkbox"] {
+  display: none;
+}
 /* Demo section */
 .demo-title {
   color: #ff0000;
@@ -522,7 +523,6 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("../assets/pictures/sf23/sf23-unveiling-thumbnail.png");
   background-size: 100% 100%;
   overflow: hidden;
 }
@@ -719,4 +719,13 @@ input[type="checkbox"] {
   .video-title {
     font-size: 16px;
   }
+}
+/* change car */
+.car-switching {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.car-switching #main-wrapper,
+.car-switching .description-wrapper {
+  opacity: 0.7;
 }

@@ -9,45 +9,40 @@
   </head>
   <body>
     <div id="app"></div>
-    <div id="container"></div>
-    <input type="checkbox" id="image-1" />
-    <input type="checkbox" id="image-2" />
-    <input type="checkbox" id="image-3" />
-    <input type="checkbox" id="image-4" />
-    <input type="checkbox" id="image-5" />
-    <input type="checkbox" id="image-6" />
+    <div id="image-checkboxes" style="display: none"></div>
+    
 
-    <!-- <div id="load">
-      <img src="assets/logo/ferrari-logo-white.svg" alt="" />
-    </div> -->
+    <div id="load">
+      <img src="assets/logo/ferrari-logo-white.svg" alt="" loading="lazy"/>
+    </div>
 
     <div id="main-wrapper">
-      <img id="sf23-reveal" src="assets/pictures/sf23/sf23-reveal.jpg" alt="" />
+      <img id="main-picture" src="assets/pictures/sf23/sf23-main.jpg"  loading="lazy" />
       <div id="main-specs">
         <div>
-          <dt>V6</dt>
+          <dt id="engine">V6</dt>
           <dd>MOTORE</dd>
         </div>
         <div class="spec-seperator"></div>
         <div>
-          <dt>1600 <span>cc</span></dt>
+          <dt id="displacement">1600 <span>cc</span></dt>
           <dd>CILINDRATA</dd>
         </div>
         <div class="spec-seperator"></div>
         <div>
-          <dt>798 <span>kg</span></dt>
+          <dt id="weight">798 <span>kg</span></dt>
           <dd>PESO</dd>
         </div>
         <div class="spec-seperator"></div>
         <div>
-          <dt>120 <span>kW</span></dt>
-          <dd>CILINDRATA</dd>
+          <dt id="power">120 <span>kW</span></dt>
+          <dd>POTENZA</dd>
         </div>
       </div>
     </div>
     <header class="nav-bar">
       <div class="logo">
-        <img src="assets/logo/ferrari-logo-white.svg" alt="Ferrari Logo" />
+        <img src="assets/logo/ferrari-logo-white.svg" alt="Ferrari Logo" loading="lazy" />
       </div>
       <nav>
         <a href="#">SQUADRA</a>
@@ -58,7 +53,7 @@
       </nav>
     </header>
     <div class="description-wrapper">
-      <div class="description-text">
+      <div class="description-text" id="description-text">
         Sviluppata e costruita a Maranello, la Ferrari SF23, guidata da Carlos
         Sainz Jr. e Charles Leclerc, ha partecipato al Campionato di Formula 1
         2023. Sebbene fosse considerata un'evoluzione della F1-75 dello scorso
@@ -68,13 +63,18 @@
         di affidabilità.
       </div>
       <div class="description-image">
-        <img src="assets/pictures/sf23/sf23-singapore.jpg" alt="" />
+        <img
+          id="description-image"
+          src="assets/pictures/sf23/sf23-description.jpg"
+          alt=""
+          loading="lazy"
+        />
       </div>
     </div>
     <input type="checkbox" id="video-toggle" style="display: none" />
     <div class="floating-video-player">
       <label for="video-toggle" class="floating-video-thumbnail">
-        <div class="thumbnail-content">
+        <div class="thumbnail-content" id="video-thumbnail">
           <div class="play-button"></div>
         </div>
       </label>
@@ -95,102 +95,13 @@
 
     <div class="slider-wrapper">
       <div class="title">GALLERIA</div>
-      <div class="slider">
-        <div class="slide">
-          <label for="image-1">
-            <img src="assets/pictures/sf23/slides/slide-1.jpg" alt="" />
-          </label>
-        </div>
-        <div class="slide">
-          <label for="image-2">
-            <img src="assets/pictures/sf23/slides/slide-2.jpg" alt="" />
-          </label>
-        </div>
-        <div class="slide">
-          <label for="image-3">
-            <img src="assets/pictures/sf23/slides/slide-3.jpg" alt="" />
-          </label>
-        </div>
-        <div class="slide">
-          <label for="image-4">
-            <img src="assets/pictures/sf23/slides/slide-4.jpg" alt="" />
-          </label>
-        </div>
-        <div class="slide">
-          <label for="image-5">
-            <img src="assets/pictures/sf23/slides/slide-5.jpg" alt="" />
-          </label>
-        </div>
-        <div class="slide">
-          <label for="image-6">
-            <img src="assets/pictures/sf23/slides/slide-6.jpg" alt="" />
-          </label>
-        </div>
-      </div>
+      <div class="slider" id="image-slider"></div>
     </div>
-    <div class="image-modal image-modal-1">
-      <div class="image-container">
-        <label class="close-button" for="image-1">&#x00D7;</label>
-        <img
-          class="image-display"
-          src="assets/pictures/sf23/slides/slide-1.jpg"
-          alt="Ferrari SF23 - Image 1"
-        />
-      </div>
-    </div>
-    <div class="image-modal image-modal-2">
-      <div class="image-container">
-        <label class="close-button" for="image-2">&#x00D7;</label>
-        <img
-          class="image-display"
-          src="assets/pictures/sf23/slides/slide-2.jpg"
-          alt="Ferrari SF23 - Image 1"
-        />
-      </div>
-    </div>
-    <div class="image-modal image-modal-3">
-      <div class="image-container">
-        <label class="close-button" for="image-3">&#x00D7;</label>
-        <img
-          class="image-display"
-          src="assets/pictures/sf23/slides/slide-3.jpg"
-          alt="Ferrari SF23 - Image 1"
-        />
-      </div>
-    </div>
-    <div class="image-modal image-modal-4">
-      <div class="image-container">
-        <label class="close-button" for="image-4">&#x00D7;</label>
-        <img
-          class="image-display"
-          src="assets/pictures/sf23/slides/slide-4.jpg"
-          alt="Ferrari SF23 - Image 1"
-        />
-      </div>
-    </div>
-    <div class="image-modal image-modal-5">
-      <div class="image-container">
-        <label class="close-button" for="image-5">&#x00D7;</label>
-        <img
-          class="image-display"
-          src="assets/pictures/sf23/slides/slide-5.jpg"
-          alt="Ferrari SF23 - Image 1"
-        />
-      </div>
-    </div>
-    <div class="image-modal image-modal-6">
-      <div class="image-container">
-        <label class="close-button" for="image-6">&#x00D7;</label>
-        <img
-          class="image-display"
-          src="assets/pictures/sf23/slides/slide-6.jpg"
-          alt="Ferrari SF23 - Image 1"
-        />
-      </div>
-    </div>
-    <div class="model-wrapper">
+   <div id="image-modals-container"></div>
+
+    <div class="model-wrapper" id="model-wrapper">
       <div class="title">Modello 3D</div>
-      <canvas id="sf23-model"></canvas>
+      <canvas id="sf23-model" ></canvas>
     </div>
     <div style="width: 400px; height: 400px"></div>
     <input type="checkbox" id="macchina-toggle" hidden />
@@ -198,7 +109,7 @@
     <div class="macchina-sidebar">
       <div class="macchine-sidebar-start">
         <div class="logo">
-          <img src="assets/logo/ferrari-logo-white.svg" alt="Ferrari Logo" />
+          <img src="assets/logo/ferrari-logo-white.svg" alt="Ferrari Logo" loading="lazy"/>
         </div>
         <label for="macchina-toggle" class="sidebar-close-button"
           >&#x00D7;</label
@@ -206,20 +117,19 @@
       </div>
       <div class="macchine-sidebar-main">
         <ul>
-          <li>SF23</li>
-          <li>SF90</li>
-          <li>SF70</li>
-          <li>499P</li>
+          <li><a href="#" data-car="sf23">SF23</a></li>
+          <li><a href="#" data-car="sf90">SF90</a></li>
+          <li><a href="#" data-car="sf70h">SF70H</a></li>
+          <li><a href="#" data-car="f499p">499P</a></li>
           <li></li>
           <li></li>
           <li></li>
         </ul>
       </div>
     </div>
-
+    <!-- <script src="src/data.js"></script> -->
     <script src="src/nav.js"></script>
     <script src="src/video.js"></script>
-    <script src="src/gallery.js"></script>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>

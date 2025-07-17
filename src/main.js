@@ -127,8 +127,8 @@ const carData = {
     model: false,
   },
 };
-  
-let current = "sf23";
+
+let current = "sf70h";
 
 async function switcMacchine(key) {
   const car = carData[key];

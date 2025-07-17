@@ -337,10 +337,10 @@ function loadScene(path, glb, scale, degrees) {
     roughness: 0.6,
     metalness: 0.3,
   });
-  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-  floor.rotation.x = -Math.PI / 2; // Rotate to be flat horizontally
-  floor.receiveShadow = true; // Enable shadows
-  scene.add(floor);
+  // const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+  // floor.rotation.x = -Math.PI / 2; 
+  // floor.receiveShadow = true;
+  // scene.add(floor);
 
   loadCars(path, glb, scale, degrees);
 

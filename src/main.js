@@ -127,7 +127,7 @@ const carData = {
     model: false,
   },
 };
-
+  
 let current = "sf23";
 
 async function switcMacchine(key) {

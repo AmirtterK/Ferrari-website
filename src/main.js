@@ -14,7 +14,7 @@ const carData = {
     description:
       "Sviluppata e costruita a Maranello, la Ferrari SF23, guidata da Carlos Sainz Jr. e Charles Leclerc, ha partecipato al Campionato di Formula 12023. Sebbene fosse considerata un'evoluzione della F1-75 dello scorsoanno, si tratta di una vettura completamente nuova, sviluppata sullabase dell'esperienza maturata nel 2022. Il motore è lo stesso dellaF1-75, ma è stato necessario un grande lavoro per risolvere i problemidi affidabilità.",
     images: {
-      main: "assets/pictures/sf23/sf23-main.jpg",
+      main: "assets/pictures/sf23/sf23-main.webp",
       description: "assets/pictures/sf23/sf23-description.jpg",
       thumbnail: "assets/pictures/sf23/sf23-thumbnail.png",
       slides: [
@@ -104,7 +104,7 @@ const carData = {
     weight: 640,
     power: "7-speed",
     description:
-      "Costruita dalla Scuderia Ferrari, la SF70H è la 63ª monoposto della squadra a partecipare al Campionato mondiale di Formula 1. Guidata da Sebastian Vettel e Kimi Räikkönen, la vettura ha beneficiato dei cambiamenti regolamentari di quest'anno, acquisendo un maggiore carico aerodinamico e grip meccanico. È pronta ad accettare la sfida e a lottare per il titolo mondiale.",
+      "La 58ª vettura di Formula 1 costruita dalla Scuderia Ferrari, la F2012 ha gareggiato nel Campionato del Mondo di Formula 1 2012, guidata da Fernando Alonso e Felipe Massa con un solo obiettivo: conquistare i titoli mondiali piloti e costruttori. Spinta da un motore V8 aspirato, la monoposto presenta un caratteristico scalino sul muso, introdotto a causa dei regolamenti, che ha permesso di alzare la parte inferiore a vantaggio dell'aerodinamica. La livrea rossa e bianca, dal forte impatto estetico, rappresenta la nostra eredità nel mondo delle corse.",
     images: {
       main: "assets/pictures/f2012/f2012-main.webp",
       description: "assets/pictures/f2012/f2012-description.jpg",
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (car === "499p") car = "f499p";
   if (car) {
     switcMacchine(car);
-  } else switcMacchine("sf90");
+  } else switcMacchine("sf23");
 });
 
 async function switcMacchine(key) {
@@ -211,10 +211,6 @@ async function switcMacchine(key) {
   }, 500);
   const modelWrapper = document.getElementById("model-wrapper");
   if (car.model) {
-    // modelWrapper.innerHTML = `
-    //     <div class="title">Modello 3D</div>
-    //     <canvas id="modello"></canvas>
-    //   `;
     modelWrapper.innerHTML = `
         <div class="title">Modello 3D</div>
         <div class="canvas-container">
@@ -272,34 +268,28 @@ function generateGallery(slides, key) {
     `;
     modalsContainer.appendChild(modalDiv);
 
-    // Add click event to image
     slideDiv.querySelector("img").addEventListener("click", () => {
-      // Close any open modals first
       document
         .querySelectorAll('#image-checkboxes input[type="checkbox"]')
         .forEach((cb) => {
           cb.checked = false;
         });
 
-      // Open the clicked modal
       checkbox.checked = true;
 
-      // Show the modal by adding the show class
       modalDiv.classList.add("show");
     });
 
-    // Add event listener to checkbox to control modal visibility
     checkbox.addEventListener("change", function () {
       if (this.checked) {
         modalDiv.classList.add("show");
-        document.body.style.overflow = "hidden"; // Prevent background scrolling
+        document.body.style.overflow = "hidden";
       } else {
         modalDiv.classList.remove("show");
-        document.body.style.overflow = ""; // Restore scrolling
+        document.body.style.overflow = "";
       }
     });
 
-    // Add click event to close button
     modalDiv.querySelector(".close-button").addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -309,7 +299,6 @@ function generateGallery(slides, key) {
     });
   });
 
-  // Close modal when clicking outside the image
   document.querySelectorAll(".image-modal").forEach((modal) => {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
@@ -322,7 +311,6 @@ function generateGallery(slides, key) {
     });
   });
 
-  // Add ESC key listener to close modals
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       const openModal = document.querySelector(".image-modal.show");

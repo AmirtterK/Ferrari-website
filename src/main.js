@@ -45,7 +45,7 @@ const carData = {
     images: {
       main: "assets/pictures/sf90/sf90-main.jpg",
       description: "assets/pictures/sf90/sf90-description.jpg",
-      thumbnail: "assets/pictures/sf90/sf90-thumbnail.png",
+      thumbnail: "assets/pictures/sf90/sf90-thumbnail.jpg",
       slides: [
         "assets/pictures/sf90/slides/slide-1.jpg",
         "assets/pictures/sf90/slides/slide-2.jpg",
@@ -76,7 +76,7 @@ const carData = {
     images: {
       main: "assets/pictures/sf70h/sf70h-main.jpg",
       description: "assets/pictures/sf70h/sf70h-description.webp",
-      thumbnail: "assets/pictures/sf70h/sf70h-thumbnail.png",
+      thumbnail: "assets/pictures/sf70h/sf70h-thumbnail.jpg",
       slides: [
         "assets/pictures/sf70h/slides/slide-1.jpg",
         "assets/pictures/sf70h/slides/slide-2.jpg",
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (car === "499p") car = "f499p";
   if (car) {
     switcMacchine(car);
-  } else switcMacchine("sf23");
+  } else switcMacchine("sf90");
 });
 
 async function switcMacchine(key) {

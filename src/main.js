@@ -424,7 +424,7 @@ function loadScene(path, glb, scale, degrees) {
     scale = 1,
     degrees = 0
   ) {
-    const loader = new FBXLoader();
+    const loader = new FBXLoader(loadingManager);
 
     loader.load(
       path,

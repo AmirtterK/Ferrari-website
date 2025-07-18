@@ -4,6 +4,7 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
+
 const carData = {
   sf23: {
     title: "Ferrari SF-23",
@@ -169,9 +170,18 @@ async function switcMacchine(key) {
   }, 500);
   const modelWrapper = document.getElementById("model-wrapper");
   if (car.model) {
+    // modelWrapper.innerHTML = `
+    //     <div class="title">Modello 3D</div>
+    //     <canvas id="modello"></canvas>
+    //   `;
     modelWrapper.innerHTML = `
         <div class="title">Modello 3D</div>
-        <canvas id="sf23-model"></canvas>
+        <div class="canvas-container">
+        <canvas id="modello"></canvas>
+        <div id="loading-screen">
+        <div id="loader"></div>
+        </div>
+        </div>
       `;
     modelWrapper.style.display = "block";
     loadScene(car.path, car.glb, car.scale, car.degrees);
@@ -289,6 +299,13 @@ function generateGallery(slides, key) {
 function loadScene(path, glb, scale, degrees) {
   const scene = new THREE.Scene();
 
+  const loadingManager = new THREE.LoadingManager(() => {
+    const loadingScreen = document.getElementById("loading-screen");
+    loadingScreen.classList.add("fade-out");
+
+    loadingScreen.addEventListener("transitionend", onTransitionEnd);
+  });
+
   const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -298,9 +315,10 @@ function loadScene(path, glb, scale, degrees) {
   camera.position.set(-14, 8, 0);
 
   const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector("#sf23-model"),
+    canvas: document.querySelector("#modello"),
     alpha: true,
   });
+
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setClearColor(0x000000, 0);
@@ -360,7 +378,7 @@ function loadScene(path, glb, scale, degrees) {
     scale = 1,
     degrees = 0
   ) {
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader(loadingManager);
 
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");

@@ -13,7 +13,9 @@
           "three/examples/jsm/loaders/GLTFLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/GLTFLoader.js",
           "three/examples/jsm/loaders/FBXLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/FBXLoader.js",
           "three/examples/jsm/controls/OrbitControls.js": "https://esm.sh/three@0.158.0/examples/jsm/controls/OrbitControls.js",
-          "three/addons/loaders/DRACOLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/DRACOLoader.js"
+          "three/addons/loaders/DRACOLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/DRACOLoader.js",
+          "three/examples/jsm/loaders/ColladaLoader.js": "https://esm.sh/three@0.158.0/examples/jsm/loaders/ColladaLoader.js",
+          three/examples/jsm/renderers/CSS2DRenderer.js : "https://esm.sh/three@0.158.0/examples/jsm/renderers/CSS2DRenderer.js"
         }
       }
     </script>
@@ -25,17 +27,13 @@
   <body>
     <div id="app"></div>
     <div id="image-checkboxes" style="display: none"></div>
-
-    <div id="load">
-      <img src="assets/logo/ferrari-logo-white.svg"  />
-    </div>
+    
+    <!-- <div id="load">
+      <img src="assets/logo/ferrari-logo-white.svg" />
+    </div> -->
 
     <div id="main-wrapper">
-      <img
-        id="main-picture"
-        src=""
-        loading="lazy"
-      />
+      <img id="main-picture" src="" loading="lazy" />
       <div id="main-specs">
         <div>
           <dt id="engine">V6</dt>
@@ -61,10 +59,7 @@
     <header class="nav-bar">
       <div class="logo">
         <a href="index.html" style="text-decoration: none">
-          <img
-            src="assets/logo/ferrari-logo-white.svg"
-            alt="Ferrari Logo"
-          />
+          <img src="assets/logo/ferrari-logo-white.svg" alt="Ferrari Logo" />
         </a>
       </div>
       <nav>
@@ -76,16 +71,9 @@
       </nav>
     </header>
     <div class="description-wrapper">
-      <div class="description-text" id="description-text">
-       
-      </div>
+      <div class="description-text" id="description-text"></div>
       <div class="description-image">
-        <img
-          id="description-image"
-          src=""
-          alt=""
-          loading="lazy"
-        />
+        <img id="description-image" src="" alt="" loading="lazy" />
       </div>
     </div>
     <input type="checkbox" id="video-toggle" style="display: none" />
@@ -113,9 +101,7 @@
     </div>
     <div id="image-modals-container"></div>
 
-    <div class="model-wrapper" id="model-wrapper">
-      
-    </div>
+    <div class="model-wrapper" id="model-wrapper"></div>
     <div style="width: 400px; height: 400px"></div>
     <input type="checkbox" id="macchina-toggle" hidden />
 

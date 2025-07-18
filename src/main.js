@@ -4,7 +4,6 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
-
 const carData = {
   sf23: {
     title: "Ferrari SF-23",
@@ -98,6 +97,33 @@ const carData = {
     degrees: 90,
     path: "assets/3d-model/sf70h/sf70h.fbx",
   },
+  f2012: {
+    title: "Ferrari F2012",
+    engine: "V8",
+    displacement: 2398,
+    weight: 640,
+    power: "7-speed",
+    description:
+      "Costruita dalla Scuderia Ferrari, la SF70H è la 63ª monoposto della squadra a partecipare al Campionato mondiale di Formula 1. Guidata da Sebastian Vettel e Kimi Räikkönen, la vettura ha beneficiato dei cambiamenti regolamentari di quest'anno, acquisendo un maggiore carico aerodinamico e grip meccanico. È pronta ad accettare la sfida e a lottare per il titolo mondiale.",
+    images: {
+      main: "assets/pictures/f2012/f2012-main.webp",
+      description: "assets/pictures/f2012/f2012-description.jpg",
+      thumbnail: "assets/pictures/f2012/f2012-thumbnail.jpg",
+      slides: [
+        "assets/pictures/f2012/slides/slide-1.jpg",
+        "assets/pictures/f2012/slides/slide-2.jpg",
+        "assets/pictures/f2012/slides/slide-3.jpg",
+        "assets/pictures/f2012/slides/slide-4.jpg",
+        "assets/pictures/f2012/slides/slide-5.jpg",
+        "assets/pictures/f2012/slides/slide-6.jpg",
+        "assets/pictures/f2012/slides/slide-7.jpg",
+        "assets/pictures/f2012/slides/slide-8.jpg",
+        "assets/pictures/f2012/slides/slide-9.jpg",
+      ],
+    },
+    video: "assets/videos/sf70h-unveiling.mp4",
+    model: false,
+  },
   f499p: {
     title: "Ferrari 499P",
     engine: "V6 ICE",
@@ -142,12 +168,27 @@ document.addEventListener("DOMContentLoaded", () => {
 async function switcMacchine(key) {
   const car = carData[key];
   if (!key) return;
+
+  if (key === "f2012") {
+    document.getElementById("main-specs").style.color = "black";
+    document
+      .querySelectorAll(".spec-seperator")
+      .forEach((seperator) => (seperator.style.backgroundColor = "black"));
+  }
+
   document.title = car.title;
   document.getElementById("engine").innerHTML = car.engine;
   document.getElementById("displacement").innerHTML =
     car.displacement + " <span>cc</span>";
   document.getElementById("weight").innerHTML = car.weight + " <span>kg</span>";
-  document.getElementById("power").innerHTML = car.power + " <span>kW</span>";
+  if (key === "f2012") {
+    document.getElementById("power").innerHTML =
+      car.power + " <span>+rev</span>";
+    document.getElementById("hybrid").innerHTML = car.power + "TRASMISSIONE";
+  } else {
+    document.getElementById("power").innerHTML = car.power + " <span>kW</span>";
+    document.getElementById("hybrid").innerHTML = car.power + "POTENZA";
+  }
   document.getElementById("description-text").textContent = car.description;
   document.getElementById("main-picture").src = car.images.main;
   document.getElementById("description-image").src = car.images.description;

@@ -465,6 +465,7 @@ nav a {
   height: 100px;
   overflow: hidden;
   flex-shrink: 0;
+  border-radius: 3px;
   margin: 2rem;
 }
 

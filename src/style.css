@@ -92,7 +92,7 @@ canvas#sf23-model {
 }
 
 /* navigation */
-.nav-bar {
+.nav-bar { 
   position: fixed;
   top: 0;
   z-index: 3;

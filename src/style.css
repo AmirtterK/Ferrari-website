@@ -4,7 +4,7 @@
 }
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 body {
   background-color: #000000;
@@ -92,7 +92,7 @@ canvas#sf23-model {
 }
 
 /* navigation */
-.nav-bar { 
+.nav-bar {
   position: fixed;
   top: 0;
   z-index: 3;
@@ -334,6 +334,7 @@ nav a {
   width: 100%;
   max-width: 100vw;
   overflow: hidden;
+  padding: 5rem 0;
 }
 
 .slider {
@@ -341,15 +342,12 @@ nav a {
   display: flex;
   width: 100%;
   height: auto;
-  padding: 5% 5rem;
-  gap: 4vw;
+  /* gap: 4vw; */
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
-  white-space: nowrap;
-
-  contain: layout;
 }
+
 .slider-wrapper .title {
   display: inline-flex;
   align-items: center;
@@ -370,10 +368,14 @@ nav a {
   height: 1px;
 }
 .slider .slide {
-  flex: 0 0 160px;
+  min-width: 160px;
+  width: 170px;
   height: 100px;
   overflow: hidden;
+  flex-shrink: 0;
+  margin: 2rem;
 }
+
 input[type="checkbox"] {
   display: none;
 }

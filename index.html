@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="assets/logo/ferrari-logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Squadra Rossa</title>
-    <link rel="stylesheet" href="src/style.css" />
+<html lang="en"><head>
     <script type="importmap">
       {
         "imports": {
@@ -17,25 +10,29 @@
         }
       }
     </script>
+    <script type="module" src="/@vite/client"></script>
 
-    <script src="src/nav.js" defer></script>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/ferrari-logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari SF90</title>
+    <link rel="stylesheet" href="http://localhost:5173/src/style.css?t=1752851833094">
+
+
+    <script src="src/nav.js" defer=""></script>
     <script src="src/video.js"></script>
     <script type="module" src="src/main.js"></script>
   </head>
-  <body>
+  <body class="">
     <div id="app"></div>
-    <div id="image-checkboxes" style="display: none"></div>
+    <div id="image-checkboxes" style="display: none"><input type="checkbox" id="image-1" style="display: none;"><input type="checkbox" id="image-2" style="display: none;"><input type="checkbox" id="image-3" style="display: none;"><input type="checkbox" id="image-4" style="display: none;"><input type="checkbox" id="image-5" style="display: none;"><input type="checkbox" id="image-6" style="display: none;"><input type="checkbox" id="image-7" style="display: none;"><input type="checkbox" id="image-8" style="display: none;"><input type="checkbox" id="image-9" style="display: none;"></div>
 
     <div id="load">
-      <img src="assets/logo/ferrari-logo-white.svg"  />
+      <img src="assets/logo/ferrari-logo-white.svg">
     </div>
 
     <div id="main-wrapper">
-      <img
-        id="main-picture"
-        src=""
-        loading="lazy"
-      />
+      <img id="main-picture" src="assets/pictures/sf90/sf90-main.jpg" loading="lazy">
       <div id="main-specs">
         <div>
           <dt id="engine">V6</dt>
@@ -48,7 +45,7 @@
         </div>
         <div class="spec-seperator"></div>
         <div>
-          <dt id="weight">798 <span>kg</span></dt>
+          <dt id="weight">743 <span>kg</span></dt>
           <dd>PESO</dd>
         </div>
         <div class="spec-seperator"></div>
@@ -61,10 +58,7 @@
     <header class="nav-bar">
       <div class="logo">
         <a href="index.html" style="text-decoration: none">
-          <img
-            src="assets/logo/ferrari-logo-white.svg"
-            alt="Ferrari Logo"
-          />
+          <img src="assets/logo/ferrari-logo-white.svg" alt="Ferrari Logo">
         </a>
       </div>
       <nav>
@@ -76,31 +70,24 @@
       </nav>
     </header>
     <div class="description-wrapper">
-      <div class="description-text" id="description-text">
-       
-      </div>
+      <div class="description-text" id="description-text">La SF90 è la 65ª monoposto costruita dalla Scuderia Ferrari per competere nel Campionato mondiale di Formula 1. Affidata a Sebastian Vettel e Charles Leclerc, la vettura risponde ai nuovi regolamenti che prevedono un aumento del peso minimo e presenta un'unità motrice potenziata composta da un V6 turbo da 1,6 litri e due motogeneratori, l'MGU-K e l'MGU-H. La SF90 rappresenta un'evoluzione della sua predecessora ed è pronta a lottare per il titolo mondiale.</div>
       <div class="description-image">
-        <img
-          id="description-image"
-          src=""
-          alt=""
-          loading="lazy"
-        />
+        <img id="description-image" src="assets/pictures/sf90/sf90-description.jpg" alt="" loading="lazy">
       </div>
     </div>
-    <input type="checkbox" id="video-toggle" style="display: none" />
+    <input type="checkbox" id="video-toggle" style="display: none">
     <div class="floating-video-player">
       <label for="video-toggle" class="floating-video-thumbnail">
-        <div class="thumbnail-content" id="video-thumbnail">
+        <div class="thumbnail-content" id="video-thumbnail" style="background-image: url(&quot;assets/pictures/sf90/sf90-thumbnail.jpg&quot;); background-size: cover; background-position: center center;">
           <div class="play-button"></div>
         </div>
       </label>
       <div class="video-modal">
         <div class="video-container">
           <div class="video-player">
-            <label class="close-button" for="video-toggle">&#x00D7;</label>
-            <video id="main-video" controls loop>
-              <source src="" type="video/mp4" />
+            <label class="close-button" for="video-toggle">×</label>
+            <video id="main-video" controls="" loop="">
+              <source src="assets/videos/sf90-unveiling.mp4" type="video/mp4">
             </video>
           </div>
         </div>
@@ -109,29 +96,86 @@
 
     <div class="slider-wrapper">
       <div class="title">GALLERIA</div>
-      <div class="slider" id="image-slider"></div>
+      <div class="slider" id="image-slider"><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-1.jpg" alt="" data-slide="1" style="cursor: pointer;" loading="lazy">
+    </div><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-2.jpg" alt="" data-slide="2" style="cursor: pointer;" loading="lazy">
+    </div><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-3.jpg" alt="" data-slide="3" style="cursor: pointer;" loading="lazy">
+    </div><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-4.jpg" alt="" data-slide="4" style="cursor: pointer;" loading="lazy">
+    </div><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-5.jpg" alt="" data-slide="5" style="cursor: pointer;" loading="lazy">
+    </div><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-6.jpg" alt="" data-slide="6" style="cursor: pointer;" loading="lazy">
+    </div><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-7.jpg" alt="" data-slide="7" style="cursor: pointer;" loading="lazy">
+    </div><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-8.jpg" alt="" data-slide="8" style="cursor: pointer;" loading="lazy">
+    </div><div class="slide">
+      <img src="assets/pictures/sf90/slides/slide-9.jpg" alt="" data-slide="9" style="cursor: pointer;" loading="lazy">
+    </div></div>
     </div>
-    <div id="image-modals-container"></div>
+    <div id="image-modals-container"><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-1">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-1.jpg" alt="Ferrari Ferrari SF90 - Image 1">
+      </div>
+    </div><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-2">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-2.jpg" alt="Ferrari Ferrari SF90 - Image 2">
+      </div>
+    </div><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-3">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-3.jpg" alt="Ferrari Ferrari SF90 - Image 3">
+      </div>
+    </div><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-4">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-4.jpg" alt="Ferrari Ferrari SF90 - Image 4">
+      </div>
+    </div><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-5">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-5.jpg" alt="Ferrari Ferrari SF90 - Image 5">
+      </div>
+    </div><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-6">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-6.jpg" alt="Ferrari Ferrari SF90 - Image 6">
+      </div>
+    </div><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-7">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-7.jpg" alt="Ferrari Ferrari SF90 - Image 7">
+      </div>
+    </div><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-8">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-8.jpg" alt="Ferrari Ferrari SF90 - Image 8">
+      </div>
+    </div><div class="image-modal">
+      <div class="image-container">
+        <label class="close-button" for="image-9">×</label>
+        <img class="image-display" src="assets/pictures/sf90/slides/slide-9.jpg" alt="Ferrari Ferrari SF90 - Image 9">
+      </div>
+    </div></div>
 
-    <div class="model-wrapper" id="model-wrapper">
-      <div class="title">Modello 3D</div>
-      <canvas id="sf23-model"></canvas>
-    </div>
+    <div class="model-wrapper" id="model-wrapper" style="display: block;">
+        <div class="title">Modello 3D</div>
+        <canvas id="sf23-model" data-engine="three.js r178" width="1476" height="675" style="width: 1073.85px; height: 491.538px; touch-action: none;"></canvas>
+      </div>
     <div style="width: 400px; height: 400px"></div>
-    <input type="checkbox" id="macchina-toggle" hidden />
+    <input type="checkbox" id="macchina-toggle" hidden="">
 
     <div class="macchina-sidebar">
       <div class="macchine-sidebar-start">
         <div class="logo">
-          <img
-            src="assets/logo/ferrari-logo-white.svg"
-            alt="Ferrari Logo"
-            loading="lazy"
-          />
+          <img src="assets/logo/ferrari-logo-white.svg" alt="Ferrari Logo" loading="lazy">
         </div>
-        <label for="macchina-toggle" class="sidebar-close-button"
-          >&#x00D7;</label
-        >
+        <label for="macchina-toggle" class="sidebar-close-button">×</label>
       </div>
       <div class="macchine-sidebar-main">
         <ul>
@@ -145,5 +189,6 @@
         </ul>
       </div>
     </div>
-  </body>
-</html>
+  
+
+</body></html>

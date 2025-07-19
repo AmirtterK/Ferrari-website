@@ -6,7 +6,7 @@ import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 const carData = {
   sf23: {
-    title: "Ferrari SF-23",
+    title: "Squadra Corsa: Ferrari SF-23",
     engine: "V6",
     displacement: 1600,
     weight: 798,
@@ -35,7 +35,7 @@ const carData = {
   },
 
   sf90: {
-    title: "Ferrari SF90",
+    title: "Squadra Corsa: Ferrari SF90",
     engine: "V6",
     displacement: 1600,
     weight: 743,
@@ -66,7 +66,7 @@ const carData = {
     path: "assets/3d-model/sf90/sf90.glb",
   },
   sf70h: {
-    title: "Ferrari SF70H",
+    title: "Squadra Corsa: Ferrari SF70H",
     engine: "V6",
     displacement: 1600,
     weight: 728,
@@ -98,7 +98,7 @@ const carData = {
     path: "assets/3d-model/sf70h/sf70h.fbx",
   },
   f2012: {
-    title: "Ferrari F2012",
+    title: "Squadra Corsa: Ferrari F2012",
     engine: "V8",
     displacement: 2398,
     weight: 640,
@@ -125,7 +125,7 @@ const carData = {
     model: false,
   },
   f499p: {
-    title: "Ferrari 499P",
+    title: "Squadra Corsa: Ferrari 499P",
     engine: "V6 ICE",
     displacement: 3000,
     weight: 1030,

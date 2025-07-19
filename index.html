@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="assets/logo/ferrari-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Squadra Rossa</title>
+    <title>Squadra Corsa</title>
     <link rel="stylesheet" href="src/style.css" />
     <script type="importmap">
       {
@@ -61,10 +61,9 @@
         </a>
       </div>
       <nav>
-        <a href="#">SQUADRA</a>
-        <!-- <a href="#">MACCHINA</a> -->
+        <label for="macchina-toggle" style="cursor: pointer">SQUADRA</label>
         <label for="macchina-toggle" style="cursor: pointer">MACCHINA</label>
-        <a href="#">CORSA</a>
+        <a href="#galleria">GALLERIA</a>
         <a href="#storia">STORIA</a>
       </nav>
     </header>
@@ -95,12 +94,12 @@
         </div>
       </div>
     </div>
-    <div class="details-section" style="height: 50vh">
+    <section id="galleria" class="details-section" style="height: 50vh">
       <div class="section-title">GALLERIA</div>
       <div class="slider-wrapper">
         <div class="slider" id="image-slider"></div>
       </div>
-    </div>
+    </section>
     <div id="image-modals-container"></div>
 
     <div class="model-wrapper" id="model-wrapper"></div>

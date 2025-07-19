@@ -120,6 +120,8 @@ canvas#modello {
   color: white;
   pointer-events: none;
   text-align: center;
+  font-weight: medium;
+   font-family: "Title-Font";
 }
 
 #loading-screen.fade-out {

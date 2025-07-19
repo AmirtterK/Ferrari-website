@@ -190,7 +190,14 @@ async function switcMacchine(key) {
     document.getElementById("hybrid").innerHTML = car.power + "POTENZA";
   }
   document.getElementById("description-text").textContent = car.description;
-  document.getElementById("main-picture").src = car.images.main;
+  // document.getElementById("main-picture").src = car.images.main;
+  const mainPic = document.getElementById("main-picture");
+  mainPic.src = car.images.main;
+  await new Promise((resolve, reject) => {
+    mainPic.onload = resolve;
+    mainPic.onerror = reject;
+  });
+
   document.getElementById("description-image").src = car.images.description;
   const thumbnail = document.getElementById("video-thumbnail");
   thumbnail.style.backgroundImage = `url(${car.images.thumbnail})`;
@@ -212,11 +219,13 @@ async function switcMacchine(key) {
   const modelWrapper = document.getElementById("model-wrapper");
   if (car.model) {
     modelWrapper.innerHTML = `
-        <div class="title">Modello 3D</div>
+        <div class="details-section">
+        <div class="section-title">Modello 3D</div>
         <div class="canvas-container">
         <canvas id="modello"></canvas>
         <div id="loading-screen">
         <div id="loader"></div>
+        </div>
         </div>
         </div>
       `;

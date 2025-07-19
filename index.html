@@ -65,15 +65,18 @@
         <!-- <a href="#">MACCHINA</a> -->
         <label for="macchina-toggle" style="cursor: pointer">MACCHINA</label>
         <a href="#">CORSA</a>
-        <a href="#">STORIA</a>
+        <a href="#storia">STORIA</a>
       </nav>
     </header>
-    <div class="description-wrapper">
-      <div class="description-text" id="description-text"></div>
-      <div class="description-image">
-        <img id="description-image" src="" alt="" loading="lazy" />
+    <section class="details-section" id="storia">
+      <div class="section-title">STORIA</div>
+      <div class="description-wrapper">
+        <div class="description-text" id="description-text"></div>
+        <div class="description-image">
+          <img id="description-image" src="" alt="" loading="lazy" />
+        </div>
       </div>
-    </div>
+    </section>
     <input type="checkbox" id="video-toggle" style="display: none" />
     <div class="floating-video-player">
       <label for="video-toggle" class="floating-video-thumbnail">
@@ -92,15 +95,15 @@
         </div>
       </div>
     </div>
-
-    <div class="slider-wrapper">
-      <div class="title">GALLERIA</div>
-      <div class="slider" id="image-slider"></div>
+    <div class="details-section" style="height: 50vh">
+      <div class="section-title">GALLERIA</div>
+      <div class="slider-wrapper">
+        <div class="slider" id="image-slider"></div>
+      </div>
     </div>
     <div id="image-modals-container"></div>
 
     <div class="model-wrapper" id="model-wrapper"></div>
-    <div style="width: 400px; height: 400px"></div>
     <input type="checkbox" id="macchina-toggle" hidden />
 
     <div class="macchina-sidebar">

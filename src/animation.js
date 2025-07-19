@@ -12,9 +12,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Watch existing elements
-  document.querySelectorAll(".details-section").forEach((wrapper) => {
-    observer.observe(wrapper);
-  });
+
+document.querySelectorAll(".details-section").forEach((section) => {
+  observer.observe(section);
 });

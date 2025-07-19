@@ -226,7 +226,7 @@ async function switcMacchine(key) {
   const modelWrapper = document.getElementById("model-wrapper");
   if (car.model) {
     modelWrapper.innerHTML = `
-        <div class="section-title">Modello 3D</div>
+        <div class="section-title">MACCHINA</div>
         <div class="canvas-container">
         <canvas id="modello"></canvas>
         <div id="loading-screen">

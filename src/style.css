@@ -117,7 +117,7 @@ canvas#modello {
 }
 #percent {
   position: absolute;
-  color: white;
+  color: #D40000;
   pointer-events: none;
   text-align: center;
   font-weight: medium;
@@ -144,7 +144,7 @@ canvas#modello {
   height: 150px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #9370db;
+  border-top-color: #D40000;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
@@ -157,7 +157,7 @@ canvas#modello {
   bottom: 5px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #ba55d3;
+  border-top-color: #E66B00  ;
   -webkit-animation: spin 3s linear infinite;
   animation: spin 3s linear infinite;
 }
@@ -170,7 +170,7 @@ canvas#modello {
   bottom: 15px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #ff00ff;
+  border-top-color: #FCE903 ;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }

@@ -229,7 +229,7 @@ nav a {
 
 /* macchina sidebar */
 
-.macchina-sidebar {
+.squadra-sidebar {
   position: fixed;
   top: 0;
   left: 0;
@@ -245,10 +245,10 @@ nav a {
   overflow-y: hidden;
 }
 
-#macchina-toggle:checked ~ .macchina-sidebar {
+#squadra-toggle:checked ~ .squadra-sidebar {
   transform: translateX(0);
 }
-.macchina-sidebar .sidebar-close-button:hover {
+.squadra-sidebar .sidebar-close-button:hover {
   color: #da291c;
   transform: rotate(90deg);
   transition: transform 0.7s ease;
@@ -444,6 +444,13 @@ nav a {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
+    opacity: 0;
+  transform: translateX(-100px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.details-section.visible .slider {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .slider .slide {

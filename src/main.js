@@ -217,7 +217,7 @@ async function switcMacchine(key) {
     videoSource.src = car.video;
     document.getElementById("main-video").load();
   }
-  document.getElementById("macchina-toggle").checked = false;
+  document.getElementById("squadra-toggle").checked = false;
 
   document.body.classList.add("car-switching");
   setTimeout(() => {

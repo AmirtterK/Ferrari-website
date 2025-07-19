@@ -12,3 +12,11 @@ window.addEventListener("scroll", () => {
 
   lastScrollY = currentScrollY;
 });
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    const sidebarToggle = document.getElementById("squadra-toggle");
+    if (sidebarToggle && sidebarToggle.checked) {
+      sidebarToggle.checked = false;
+    }
+  }
+});

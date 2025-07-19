@@ -346,7 +346,11 @@ function generateGallery(slides, key) {
 
 function loadScene(path, glb, scale, degrees) {
   const scene = new THREE.Scene();
-
+  function onTransitionEnd() {
+    const loadingScreen = document.getElementById("loading-screen");
+    loadingScreen.style.display = "none";
+    loadingScreen.remove(); // or whatever cleanup you need
+  }
   const loadingManager = new THREE.LoadingManager(() => {
     const loadingScreen = document.getElementById("loading-screen");
     loadingScreen.classList.add("fade-out");

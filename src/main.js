@@ -227,13 +227,17 @@ async function switcMacchine(key) {
   if (car.model) {
     modelWrapper.innerHTML = `
         <div class="section-title">MACCHINA</div>
-        <div class="canvas-container">
-        <canvas id="modello"></canvas>
-        <div id="loading-screen">
-        <div id="loader"></div>
-        </div>
-        </div>
-      `;
+          <div class="canvas-container">
+          <canvas id="modello"></canvas>
+          <div id="loading-screen">
+              <div id="loader-wrapper">
+              <div id="percent">0%</div>
+                <div id="loader">
+                </div>
+              </div>
+          </div>
+          </div>
+          `;
     modelWrapper.style.display = "block";
 
     loadScene(car.path, car.glb, car.scale, car.degrees);
@@ -349,7 +353,21 @@ function loadScene(path, glb, scale, degrees) {
 
     loadingScreen.addEventListener("transitionend", onTransitionEnd);
   });
+  const loadingText = document.getElementById("percent");
+  loadingManager.onProgress = function (url, loaded, total) {
+    const percent = Math.floor((loaded / total) * 100);
+    const loadingText = document.getElementById("percent");
+    if (loadingText) {
+      loadingText.innerHTML = `${percent}%`;
+    }
+  };
 
+  loadingManager.onLoad = function () {
+    console.log("Loading complete!");
+    const loadingScreen = document.getElementById("loading-screen");
+    loadingScreen.classList.add("fade-out");
+    loadingScreen.addEventListener("transitionend", onTransitionEnd);
+  };
   const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,

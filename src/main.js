@@ -197,15 +197,6 @@ async function switcMacchine(key) {
     mainPic.onload = resolve;
     mainPic.onerror = reject;
   });
-  // thumbnai image
-  const thumbnailPic = document.getElementById("video-thumbnail");
-  thumbnailPic.style.backgroundImage = `url(${car.images.thumbnail})`;
-  thumbnailPic.style.backgroundSize = "cover";
-  thumbnailPic.style.backgroundPosition = "center";
-  await new Promise((resolve, reject) => {
-    thumbnailPic.onload = resolve;
-    thumbnailPic.onerror = reject;
-  });
   // description image
   const descriptionPic = document.getElementById("description-image");
   descriptionPic.src = car.images.description;
@@ -214,6 +205,11 @@ async function switcMacchine(key) {
     descriptionPic.onload = resolve;
     descriptionPic.onerror = reject;
   });
+  // thumbnai image
+  const thumbnail = document.getElementById("video-thumbnail");
+  thumbnail.style.backgroundImage = `url(${car.images.thumbnail})`;
+  thumbnail.style.backgroundSize = "cover";
+  thumbnail.style.backgroundPosition = "center";
 
   generateGallery(car.images.slides, key);
   const videoSource = document.querySelector("#main-video source");

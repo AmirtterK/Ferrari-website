@@ -235,7 +235,7 @@ async function switcMacchine(key) {
                 <div id="loader">
                 </div>
               </div>
-          </div>
+          </div> 
           </div>
           `;
     modelWrapper.style.display = "block";

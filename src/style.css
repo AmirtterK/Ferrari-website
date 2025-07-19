@@ -800,6 +800,5 @@ input[type="checkbox"] {
 
 img:not([src]),
 img[src=""] {
-  background: black;
-
+  opacity: 0;
 } 

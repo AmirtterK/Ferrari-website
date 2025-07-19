@@ -378,7 +378,7 @@ function loadScene(path, glb, scale, degrees) {
     0.1,
     500
   );
-  camera.position.set(-14, 8, 0);
+  camera.position.set(-14, 8, 0); 
 
   const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector("#modello"),

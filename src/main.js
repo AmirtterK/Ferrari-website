@@ -190,15 +190,21 @@ async function switcMacchine(key) {
     document.getElementById("hybrid").innerHTML = car.power + "POTENZA";
   }
   document.getElementById("description-text").textContent = car.description;
-  // document.getElementById("main-picture").src = car.images.main;
+  // main image
   const mainPic = document.getElementById("main-picture");
   mainPic.src = car.images.main;
   await new Promise((resolve, reject) => {
     mainPic.onload = resolve;
     mainPic.onerror = reject;
   });
+  // description-image
+  const descriptionPic = document.getElementById("description-image");
+  descriptionPic.src = car.images.description;
 
-  document.getElementById("description-image").src = car.images.description;
+  await new Promise((resolve, reject) => {
+    descriptionPic.onload = resolve;
+    descriptionPic.onerror = reject;
+  });
   const thumbnail = document.getElementById("video-thumbnail");
   thumbnail.style.backgroundImage = `url(${car.images.thumbnail})`;
   thumbnail.style.backgroundSize = "cover";

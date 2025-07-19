@@ -197,6 +197,11 @@ async function switcMacchine(key) {
     mainPic.onload = resolve;
     mainPic.onerror = reject;
   });
+  // thumbnai image
+  const thumbnail = document.getElementById("video-thumbnail");
+  thumbnail.style.backgroundImage = `url(${car.images.thumbnail})`;
+  thumbnail.style.backgroundSize = "cover";
+  thumbnail.style.backgroundPosition = "center";
   // description image
   const descriptionPic = document.getElementById("description-image");
   descriptionPic.src = car.images.description;
@@ -205,11 +210,6 @@ async function switcMacchine(key) {
     descriptionPic.onload = resolve;
     descriptionPic.onerror = reject;
   });
-  // thumbnai image
-  const thumbnail = document.getElementById("video-thumbnail");
-  thumbnail.style.backgroundImage = `url(${car.images.thumbnail})`;
-  thumbnail.style.backgroundSize = "cover";
-  thumbnail.style.backgroundPosition = "center";
 
   generateGallery(car.images.slides, key);
   const videoSource = document.querySelector("#main-video source");
@@ -226,7 +226,6 @@ async function switcMacchine(key) {
   const modelWrapper = document.getElementById("model-wrapper");
   if (car.model) {
     modelWrapper.innerHTML = `
-        <div class="details-section">
         <div class="section-title">Modello 3D</div>
         <div class="canvas-container">
         <canvas id="modello"></canvas>
@@ -234,9 +233,9 @@ async function switcMacchine(key) {
         <div id="loader"></div>
         </div>
         </div>
-        </div>
       `;
     modelWrapper.style.display = "block";
+
     loadScene(car.path, car.glb, car.scale, car.degrees);
   } else {
     modelWrapper.style.display = "none";

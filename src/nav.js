@@ -9,7 +9,7 @@ window.addEventListener("scroll", () => {
   } else {
     navBar.classList.remove("nav-hidden");
   }
-
+ 
   lastScrollY = currentScrollY;
 });
 document.addEventListener("keydown", (event) => {

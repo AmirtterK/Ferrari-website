@@ -35,8 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
     video.currentTime = 0;
   }
   function openVideo() {
+    // Load video source lazily on first open
+    if (video.getAttribute("data-needs-load") === "true") {
+      video.load();
+      video.removeAttribute("data-needs-load");
+    }
     setTimeout(() => {
-      video.play().catch((error) => {});
+      video.play().catch(() => {});
     }, 300);
   }
 });

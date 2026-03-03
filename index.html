@@ -19,7 +19,7 @@
     </script>
 
     <script src="src/nav.js" defer></script>
-    <script src="src/video.js"></script>
+    <script src="src/video.js" defer></script>
     <script type="module" src="src/main.js"></script>
     <script type="module" src="src/animation.js"></script>
   </head>
@@ -32,7 +32,7 @@
     </div>
 
     <div id="main-wrapper">
-      <img id="main-picture" src="" loading="lazy" />
+      <img id="main-picture" src="" fetchpriority="high" />
       <div id="main-specs">
         <div>
           <dt id="engine">V6</dt>
@@ -120,7 +120,7 @@
         </div>
       </div>
     </div>
-    <section id="galleria" class="details-section" style="height: 50vh">
+    <section id="galleria" class="details-section">
       <div class="section-title">GALLERIA</div>
       <div class="slider-wrapper">
         <div class="slider" id="image-slider"></div>

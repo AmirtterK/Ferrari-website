@@ -915,10 +915,10 @@ img[src=""] {
   }
 
   #main-picture {
-    height: auto;
+    height: 75vw;
     width: 100%;
-    object-fit: contain;
-    object-position: center top;
+    object-fit: cover;
+    object-position: center center;
     max-height: none;
   }
 
@@ -1031,13 +1031,13 @@ img[src=""] {
   /* Video thumbnail — fixed bottom-left while scrolling */
   .floating-video-player {
     position: fixed;
-    bottom: 72px;
+    bottom: 100px;
     left: 12px;
   }
 
   .thumbnail-content {
-    width: 100px;
-    height: 56px;
+    width: 140px;
+    height: 79px;
   }
 
   .play-button {

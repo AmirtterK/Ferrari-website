@@ -374,7 +374,9 @@ function loadScene(path, glb, scale, degrees) {
   };
   const camera = new THREE.PerspectiveCamera(
     75,
-    window.innerWidth / window.innerHeight,
+    window.innerWidth / (window.innerWidth <= 768
+      ? Math.round(window.innerWidth * 0.65)
+      : Math.round(window.innerWidth * 0.56)),
     0.1,
     500
   );
@@ -388,8 +390,24 @@ function loadScene(path, glb, scale, degrees) {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setClearColor(0x000000, 0);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth / 1.3, window.innerHeight / 1.3);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const canvasContainer = document.querySelector(".canvas-container");
+  const containerWidth = canvasContainer ? canvasContainer.clientWidth : window.innerWidth;
+  const canvasWidth = Math.min(containerWidth, window.innerWidth);
+  const canvasHeight = window.innerWidth <= 768
+    ? Math.round(canvasWidth * 0.65)
+    : Math.round(canvasWidth * 0.56);
+  renderer.setSize(canvasWidth, canvasHeight);
+
+  window.addEventListener("resize", () => {
+    const containerWidth = canvasContainer ? canvasContainer.clientWidth : window.innerWidth;
+    const w = Math.min(containerWidth, window.innerWidth);
+    const h = window.innerWidth <= 768 ? Math.round(w * 0.65) : Math.round(w * 0.56);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
   const loader = new THREE.TextureLoader();
   loader.load("assets/pictures/canvas-background.jpg", function (texture) {
     scene.background = texture;

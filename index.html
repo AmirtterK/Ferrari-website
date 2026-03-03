@@ -62,23 +62,37 @@
         </a>
       </div>
       <nav>
-        <label
-          for="squadra-toggle"
-          style="
-            cursor: pointer;
-            text-decoration: none;
-            font-family: 'Body-Font';
-            font-size: 12px;
-            color: white;
-              letter-spacing: 2px;
-          "
-          >SQUADRA</label
-        >
+        <label for="squadra-toggle">SQUADRA</label>
         <a href="#storia">STORIA</a>
         <a href="#galleria">GALLERIA</a>
         <a href="#model-wrapper">MACCHINA</a>
       </nav>
+      <!-- Hamburger for mobile -->
+      <div class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
+
+    <!-- Mobile nav drawer overlay -->
+    <div class="nav-drawer-overlay" id="nav-drawer-overlay"></div>
+
+    <!-- Mobile nav drawer -->
+    <div class="nav-mobile-drawer" id="nav-mobile-drawer">
+      <button class="nav-close" id="nav-close" aria-label="Close menu">&#x00D7;</button>
+
+      <a href="#storia" class="mobile-nav-link">STORIA</a>
+      <a href="#galleria" class="mobile-nav-link">GALLERIA</a>
+      <a href="#model-wrapper" class="mobile-nav-link">MACCHINA</a>
+
+      <div class="mobile-nav-section-label">SQUADRA</div>
+      <a href="?Ferrari=sf23" class="mobile-nav-link mobile-car-link">SF23</a>
+      <a href="?Ferrari=499p" class="mobile-nav-link mobile-car-link">499P</a>
+      <a href="?Ferrari=sf90" class="mobile-nav-link mobile-car-link">SF90</a>
+      <a href="?Ferrari=sf70h" class="mobile-nav-link mobile-car-link">SF70H</a>
+      <a href="?Ferrari=f2012" class="mobile-nav-link mobile-car-link">F2012</a>
+    </div>
     <section class="details-section" id="storia">
       <div class="section-title">STORIA</div>
       <div class="description-wrapper">
